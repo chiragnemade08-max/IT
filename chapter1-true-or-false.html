@@ -6,651 +6,112 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#102d68">
 <title>Chapter 1 — True or False | STUDY-HUB</title>
-
 <style>
 :root {
-  --navy: #081b43;
-  --blue: #1746a2;
-  --royal: #2864e8;
-  --ink: #183153;
-  --muted: #61718a;
-  --border: #d6e5fb;
-  --green: #138357;
+  --navy:#081b43;--blue:#1746a2;--royal:#2864e8;
+  --ink:#183153;--muted:#61718a;--border:#d6e5fb;
 }
-
-* { box-sizing: border-box; }
-
-html { scroll-behavior: smooth; }
-
-body {
-  margin: 0;
-  color: var(--ink);
-  font-family: "Segoe UI", Arial, sans-serif;
-  background: linear-gradient(180deg, #edf5ff, #f8fbff 420px, #f2f6fc);
-  line-height: 1.55;
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;color:var(--ink);font-family:"Segoe UI",Arial,sans-serif;
+  background:linear-gradient(180deg,#edf5ff,#f8fbff 420px,#f2f6fc);
+  line-height:1.55
 }
-
-.hero {
-  position: relative;
-  overflow: hidden;
-  color: white;
-  padding: 26px max(20px, calc((100% - 1200px) / 2)) 55px;
-  background:
-    radial-gradient(circle at 85% 15%, #68c9ff35, transparent 28%),
-    radial-gradient(circle at 10% 100%, #276cf966, transparent 36%),
-    linear-gradient(130deg, #071633, #103574 60%, #2059bf);
+.hero{
+  color:white;padding:26px max(20px,calc((100% - 1200px)/2)) 55px;
+  background:radial-gradient(circle at 85% 15%,#68c9ff35,transparent 28%),
+  radial-gradient(circle at 10% 100%,#276cf966,transparent 36%),
+  linear-gradient(130deg,#071633,#103574 60%,#2059bf)
 }
-
-.hero::before {
-  content: "";
-  position: absolute;
-  width: 330px;
-  height: 330px;
-  right: -110px;
-  top: -190px;
-  border: 1px solid #ffffff35;
-  border-radius: 50%;
-  box-shadow: 0 0 0 35px #ffffff08, 0 0 0 75px #ffffff07;
-  pointer-events: none;
+.topbar{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:3px}
+.brand-logo{display:grid;place-items:center;width:44px;height:44px;color:#153c82;background:linear-gradient(145deg,white,#bce7ff);border-radius:13px;font-weight:900}
+.topbar-actions{display:flex;flex-wrap:wrap;gap:10px}
+.back-home-btn,.export-btn,.toggle-btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  padding:12px 17px;border-radius:13px;font-size:.9rem;font-weight:800;cursor:pointer
 }
-
-.topbar {
-  position: relative;
-  z-index: 1;
-  max-width: 1200px;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
+.back-home-btn{color:white;background:#ffffff12;border:1px solid #ffffff50;text-decoration:none}
+.export-btn{color:white;background:linear-gradient(135deg,#438aff,#2054d9);border:1px solid #ffffff50}
+.hero-content{max-width:1200px;margin:48px auto 0}
+.eyebrow{color:#c6e9ff;font-size:.8rem;font-weight:850;letter-spacing:3px}
+.chapter-tag{display:inline-block;margin-top:24px;padding:7px 13px;color:#d9efff;background:#ffffff12;border:1px solid #ffffff45;border-radius:30px;font-size:.8rem;font-weight:800;letter-spacing:2px}
+h1{margin:15px 0 8px;font-size:clamp(2.3rem,6vw,4.7rem);font-weight:950;line-height:1.02;letter-spacing:-2px}
+.hero-subtitle{margin:0;color:#dceeff;font-size:clamp(1rem,2vw,1.3rem);font-weight:700;letter-spacing:2px}
+.hero-pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.hero-pills span{padding:8px 12px;color:#e8f5ff;background:#ffffff12;border:1px solid #ffffff28;border-radius:10px;font-size:.83rem}
+main{max-width:1240px;margin:-22px auto 0;padding:0 22px 40px;position:relative}
+.toolbar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;padding:17px 20px;background:#ffffffed;border:1px solid white;border-radius:18px;box-shadow:0 10px 28px #17438712}
+.counter-wrap{display:flex;align-items:center;gap:12px}
+.counter-icon{display:grid;place-items:center;width:43px;height:43px;border-radius:13px;background:#e8f1ff;color:#2055c9;font-size:1.3rem}
+.counter{color:#15376e;font-weight:900}
+.counter small{display:block;color:var(--muted);font-size:.78rem;font-weight:600}
+.toggle-btn{color:#1949a5;background:#edf4ff;border:1px solid #cbdfff}
+.tip{display:flex;gap:12px;margin:22px 0;padding:15px 17px;color:#345575;background:linear-gradient(100deg,#e4f4ff,#f3faff);border:1px solid #cce8ff;border-radius:15px}
+.tip-icon{display:grid;place-items:center;flex:0 0 30px;height:30px;color:#1766c3;background:white;border-radius:9px;font-weight:900}
+.tip strong{color:#123c79}
+.section-heading{margin:0 0 16px}
+.section-heading h2{margin:0;color:#102b5f;font-size:1.35rem}
+.section-heading p{margin:4px 0 0;color:var(--muted);font-size:.9rem}
+.part-heading{display:flex;align-items:center;gap:12px;margin:27px 0 14px;padding-bottom:11px;border-bottom:2px solid #d6e5fb;color:#12336e;font-size:1.1rem}
+.part-number{display:grid;place-items:center;flex:0 0 37px;height:37px;color:white;background:linear-gradient(145deg,#438aff,#2054d9);border-radius:11px;font-size:.85rem;font-weight:900}
+.question-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:start;gap:15px}
+.question-card{min-width:0;padding:17px;background:white;border:1px solid var(--border);border-radius:17px;box-shadow:0 4px 15px #1d488c0b;break-inside:avoid;page-break-inside:avoid}
+.question-line{display:flex;align-items:flex-start;gap:12px}
+.number-badge{display:grid;place-items:center;flex:0 0 38px;height:38px;color:white;background:linear-gradient(145deg,#4b8bff,#1f50c5);border-radius:12px;font-size:.84rem;font-weight:900}
+.question-text{margin:5px 0 15px;color:#18345f;font-size:.94rem;font-weight:700;line-height:1.55;overflow-wrap:anywhere}
+.question-text code{padding:1px 4px;color:#1746a2;background:#edf4ff;border-radius:4px;font-size:.9em}
+.answer-panel{display:flex;align-items:center;gap:10px;padding:11px 12px;border-radius:12px}
+.answer-panel.true{background:linear-gradient(135deg,#e8fbf2,#f3fff9);border:1px solid #c4f0dc}
+.answer-panel.false{background:linear-gradient(135deg,#fff0f0,#fff8f8);border:1px solid #f6d1d1}
+.answer-icon{display:grid;place-items:center;flex:0 0 25px;height:25px;border-radius:50%;font-weight:950}
+.true .answer-icon{color:#08764b;background:#c7f4df}
+.false .answer-icon{color:#b42332;background:#ffd8dc}
+.answer-label{display:block;margin-bottom:1px;font-size:.65rem;font-weight:900;letter-spacing:2px}
+.true .answer-label,.true .answer-text{color:#155d43}
+.false .answer-label,.false .answer-text{color:#9f2531}
+.answer-text{margin:0;font-size:.95rem;font-weight:900}
+.answers-hidden .answer-panel{display:none}
+footer{padding:24px 18px 30px;color:#6d7e99;text-align:center;font-size:.83rem}
+footer strong{color:#234a87;letter-spacing:2px}
+.footer-rule{width:60px;height:3px;margin:0 auto 12px;background:linear-gradient(90deg,#67b9ff,#2459d8);border-radius:9px}
+@media(max-width:700px){
+ .hero{padding:20px 16px 43px}.topbar{align-items:flex-start}
+ .brand{gap:8px;font-size:.82rem;letter-spacing:2px}
+ .brand-logo{width:37px;height:37px}.topbar-actions{gap:7px}
+ .back-home-btn,.export-btn{gap:5px;padding:10px;font-size:.76rem}
+ .hero-content{margin-top:38px}main{padding:0 13px 30px}
+ .toolbar{padding:14px}.question-grid{grid-template-columns:1fr;gap:12px}
+ .question-card{padding:15px}
 }
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 1rem;
-  font-weight: 900;
-  letter-spacing: 3px;
-}
-
-.brand-logo {
-  display: grid;
-  place-items: center;
-  width: 44px;
-  height: 44px;
-  color: #153c82;
-  background: linear-gradient(145deg, white, #bce7ff);
-  border-radius: 13px;
-  box-shadow: 0 5px 18px #0003;
-  letter-spacing: -1px;
-}
-
-.topbar-actions {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.back-home-btn, .export-btn, .toggle-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 9px;
-  padding: 12px 17px;
-  border-radius: 13px;
-  font-size: .9rem;
-  font-weight: 800;
-  cursor: pointer;
-  transition: transform .2s, box-shadow .2s, filter .2s;
-}
-
-.back-home-btn {
-  color: white;
-  background: #ffffff12;
-  border: 1px solid #ffffff50;
-  text-decoration: none;
-}
-
-.back-home-btn:hover {
-  background: #ffffff28;
-  transform: translateY(-2px);
-}
-
-.export-btn {
-  color: white;
-  background: linear-gradient(135deg, #438aff, #2054d9);
-  border: 1px solid #ffffff50;
-  box-shadow: 0 7px 22px #001b5866;
-}
-
-.export-btn:hover, .toggle-btn:hover {
-  transform: translateY(-2px);
-  filter: brightness(1.06);
-}
-
-.back-home-btn:focus-visible,
-.export-btn:focus-visible,
-.toggle-btn:focus-visible {
-  outline: 3px solid #83d8ff;
-  outline-offset: 3px;
-}
-
-.hero-content {
-  max-width: 1200px;
-  margin: 48px auto 0;
-  position: relative;
-  z-index: 1;
-}
-
-.eyebrow {
-  color: #c6e9ff;
-  font-size: .8rem;
-  font-weight: 850;
-  letter-spacing: 3px;
-}
-
-.chapter-tag {
-  display: inline-block;
-  margin-top: 24px;
-  padding: 7px 13px;
-  color: #d9efff;
-  background: #ffffff12;
-  border: 1px solid #ffffff45;
-  border-radius: 30px;
-  font-size: .8rem;
-  font-weight: 800;
-  letter-spacing: 2px;
-}
-
-h1 {
-  margin: 15px 0 8px;
-  font-size: clamp(2.3rem, 6vw, 4.7rem);
-  font-weight: 950;
-  line-height: 1.02;
-  letter-spacing: -2px;
-}
-
-.hero-subtitle {
-  margin: 0;
-  color: #dceeff;
-  font-size: clamp(1rem, 2vw, 1.3rem);
-  font-weight: 700;
-  letter-spacing: 2px;
-}
-
-.hero-pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 28px;
-}
-
-.hero-pills span {
-  padding: 8px 12px;
-  color: #e8f5ff;
-  background: #ffffff12;
-  border: 1px solid #ffffff28;
-  border-radius: 10px;
-  font-size: .83rem;
-}
-
-main {
-  position: relative;
-  max-width: 1240px;
-  margin: -22px auto 0;
-  padding: 0 22px 40px;
-}
-
-.toolbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 14px;
-  padding: 17px 20px;
-  background: #ffffffed;
-  border: 1px solid white;
-  border-radius: 18px;
-  box-shadow: 0 10px 28px #17438712;
-}
-
-.counter-wrap {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.counter-icon {
-  display: grid;
-  place-items: center;
-  width: 43px;
-  height: 43px;
-  border-radius: 13px;
-  background: #e8f1ff;
-  color: #2055c9;
-  font-size: 1.3rem;
-}
-
-.counter {
-  color: #15376e;
-  font-weight: 900;
-}
-
-.counter small {
-  display: block;
-  color: var(--muted);
-  font-size: .78rem;
-  font-weight: 600;
-}
-
-.toggle-btn {
-  color: #1949a5;
-  background: #edf4ff;
-  border: 1px solid #cbdfff;
-}
-
-.tip {
-  display: flex;
-  gap: 12px;
-  margin: 22px 0;
-  padding: 15px 17px;
-  color: #345575;
-  background: linear-gradient(100deg, #e4f4ff, #f3faff);
-  border: 1px solid #cce8ff;
-  border-radius: 15px;
-}
-
-.tip-icon {
-  display: grid;
-  place-items: center;
-  flex: 0 0 30px;
-  height: 30px;
-  color: #1766c3;
-  background: white;
-  border-radius: 9px;
-  font-weight: 900;
-}
-
-.tip strong { color: #123c79; }
-
-.section-heading {
-  margin: 0 0 16px;
-}
-
-.section-heading h2 {
-  margin: 0;
-  color: #102b5f;
-  font-size: 1.35rem;
-}
-
-.section-heading p {
-  margin: 4px 0 0;
-  color: var(--muted);
-  font-size: .9rem;
-}
-
-.part-heading {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin: 27px 0 14px;
-  padding-bottom: 11px;
-  border-bottom: 2px solid #d6e5fb;
-  color: #12336e;
-  font-size: 1.1rem;
-}
-
-.part-number {
-  display: grid;
-  place-items: center;
-  flex: 0 0 37px;
-  height: 37px;
-  color: white;
-  background: linear-gradient(145deg, #438aff, #2054d9);
-  border-radius: 11px;
-  font-size: .85rem;
-  font-weight: 900;
-}
-
-.question-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  align-items: start;
-  gap: 15px;
-}
-
-.question-card {
-  min-width: 0;
-  padding: 17px;
-  background: white;
-  border: 1px solid var(--border);
-  border-radius: 17px;
-  box-shadow: 0 4px 15px #1d488c0b;
-  transition: transform .2s, box-shadow .2s, border-color .2s;
-  break-inside: avoid;
-  page-break-inside: avoid;
-}
-
-.question-card:hover {
-  transform: translateY(-3px);
-  border-color: #a8c9ff;
-  box-shadow: 0 12px 25px #1d488c1c;
-}
-
-.question-line {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-}
-
-.number-badge {
-  display: grid;
-  place-items: center;
-  flex: 0 0 38px;
-  height: 38px;
-  color: white;
-  background: linear-gradient(145deg, #4b8bff, #1f50c5);
-  border-radius: 12px;
-  font-size: .84rem;
-  font-weight: 900;
-  box-shadow: 0 5px 12px #2563eb2b;
-}
-
-.question-text {
-  margin: 5px 0 15px;
-  color: #18345f;
-  font-size: .94rem;
-  font-weight: 700;
-  line-height: 1.55;
-  overflow-wrap: anywhere;
-}
-
-.question-text code {
-  padding: 1px 4px;
-  color: #1746a2;
-  background: #edf4ff;
-  border-radius: 4px;
-  font-size: .9em;
-  font-weight: 700;
-  overflow-wrap: anywhere;
-}
-
-.answer-panel {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 11px 12px;
-  border-radius: 12px;
-}
-
-.answer-panel.true {
-  background: linear-gradient(135deg, #e8fbf2, #f3fff9);
-  border: 1px solid #c4f0dc;
-}
-
-.answer-panel.false {
-  background: linear-gradient(135deg, #fff0f0, #fff8f8);
-  border: 1px solid #f6d1d1;
-}
-
-.answer-icon {
-  display: grid;
-  place-items: center;
-  flex: 0 0 25px;
-  height: 25px;
-  border-radius: 50%;
-  font-weight: 950;
-}
-
-.true .answer-icon {
-  color: #08764b;
-  background: #c7f4df;
-}
-
-.false .answer-icon {
-  color: #b42332;
-  background: #ffd8dc;
-}
-
-.answer-label {
-  display: block;
-  margin-bottom: 1px;
-  font-size: .65rem;
-  font-weight: 900;
-  letter-spacing: 2px;
-}
-
-.true .answer-label, .true .answer-text { color: #155d43; }
-.false .answer-label, .false .answer-text { color: #9f2531; }
-
-.answer-text {
-  margin: 0;
-  font-size: .95rem;
-  font-weight: 900;
-}
-
-.answers-hidden .answer-panel { display: none; }
-
-footer {
-  padding: 24px 18px 30px;
-  color: #6d7e99;
-  text-align: center;
-  font-size: .83rem;
-}
-
-footer strong {
-  color: #234a87;
-  letter-spacing: 2px;
-}
-
-.footer-rule {
-  width: 60px;
-  height: 3px;
-  margin: 0 auto 12px;
-  background: linear-gradient(90deg, #67b9ff, #2459d8);
-  border-radius: 9px;
-}
-
-@media (max-width: 700px) {
-  .hero { padding: 20px 16px 43px; }
-
-  .topbar { align-items: flex-start; }
-
-  .brand {
-    gap: 8px;
-    font-size: .82rem;
-    letter-spacing: 2px;
-  }
-
-  .brand-logo {
-    width: 37px;
-    height: 37px;
-  }
-
-  .topbar-actions { gap: 7px; }
-
-  .back-home-btn, .export-btn {
-    gap: 5px;
-    padding: 10px;
-    font-size: .76rem;
-  }
-
-  .hero-content { margin-top: 38px; }
-
-  main { padding: 0 13px 30px; }
-
-  .toolbar { padding: 14px; }
-
-  .question-grid {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-
-  .question-card { padding: 15px; }
-}
-
-@media (max-width: 420px) {
-  .topbar {
-    flex-wrap: wrap;
-    align-items: center;
-  }
-
-  .topbar-actions {
-    width: 100%;
-    justify-content: flex-start;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after { transition: none !important; }
-}
-
-@page {
-  size: A4;
-  margin: 11mm 10mm 13mm;
-}
-
-@media print {
-  html, body {
-    color: #142849 !important;
-    background: white !important;
-    font-size: 9pt;
-    print-color-adjust: exact;
-    -webkit-print-color-adjust: exact;
-  }
-
-  .hero {
-    padding: 8mm;
-    background: linear-gradient(130deg, #071735, #103574 60%, #1d55bd) !important;
-  }
-
-  .hero::before { display: none; }
-
-  .back-home-btn, .export-btn, .toggle-btn { display: none !important; }
-
-  .hero-content { margin: 6mm 0 0; }
-
-  .chapter-tag { margin-top: 3mm; }
-
-  h1 {
-    margin: 3mm 0 1.5mm;
-    font-size: 28pt;
-  }
-
-  .hero-subtitle { font-size: 11pt; }
-
-  .hero-pills { margin-top: 3mm; }
-
-  main {
-    max-width: none;
-    margin: 4mm 0 0;
-    padding: 0;
-  }
-
-  .toolbar {
-    padding: 3mm;
-    border: 1px solid #cbdcf2;
-    box-shadow: none;
-  }
-
-  .counter-icon { display: none; }
-
-  .tip {
-    margin: 3mm 0;
-    padding: 3mm;
-    background: #edf7ff !important;
-  }
-
-  .tip-icon { display: none; }
-
-  .section-heading { margin-bottom: 2mm; }
-
-  .part-heading {
-    margin: 5mm 0 2mm;
-    padding-bottom: 1.5mm;
-    font-size: 11pt;
-    break-after: avoid;
-    page-break-after: avoid;
-  }
-
-  .part-number {
-    flex-basis: 7mm;
-    height: 7mm;
-    border-radius: 2mm;
-  }
-
-  .question-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 2.5mm;
-  }
-
-  .question-card {
-    padding: 2.5mm;
-    border: .6pt solid #cbdcf2;
-    border-radius: 2mm;
-    box-shadow: none;
-    break-inside: avoid !important;
-    page-break-inside: avoid !important;
-  }
-
-  .question-card:hover {
-    transform: none;
-    box-shadow: none;
-  }
-
-  .question-line { gap: 2mm; }
-
-  .number-badge {
-    flex-basis: 7mm;
-    height: 7mm;
-    border-radius: 2mm;
-    font-size: 7.5pt;
-    box-shadow: none;
-  }
-
-  .question-text {
-    margin: 1mm 0 2mm;
-    font-size: 8pt;
-    line-height: 1.32;
-  }
-
-  .answer-panel {
-    display: flex !important;
-    gap: 2mm;
-    padding: 1.5mm 2mm;
-    border-radius: 2mm;
-    break-inside: avoid;
-  }
-
-  .answer-icon {
-    flex-basis: 4mm;
-    height: 4mm;
-    font-size: 7pt;
-  }
-
-  .answer-label {
-    margin-bottom: 0;
-    font-size: 5.5pt;
-  }
-
-  .answer-text { font-size: 8pt; }
-
-  footer {
-    padding-top: 4mm;
-    font-size: 7pt;
-  }
-
-  .footer-rule { margin-bottom: 2mm; }
-
-  .answers-hidden .answer-panel { display: flex !important; }
+@media(max-width:420px){.topbar{flex-wrap:wrap;align-items:center}.topbar-actions{width:100%;justify-content:flex-start}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
+@page{size:A4;margin:11mm 10mm 13mm}
+@media print{
+ html,body{color:#142849!important;background:white!important;font-size:9pt;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+ .hero{padding:8mm;background:linear-gradient(130deg,#071735,#103574 60%,#1d55bd)!important}
+ .back-home-btn,.export-btn,.toggle-btn{display:none!important}
+ .hero-content{margin:6mm 0 0}h1{margin:3mm 0 1.5mm;font-size:28pt}
+ .hero-subtitle{font-size:11pt}.hero-pills{margin-top:3mm}
+ main{max-width:none;margin:4mm 0 0;padding:0}
+ .toolbar{padding:3mm;border:1px solid #cbdcf2;box-shadow:none}
+ .counter-icon{display:none}.tip{margin:3mm 0;padding:3mm;background:#edf7ff!important}
+ .tip-icon{display:none}.section-heading{margin-bottom:2mm}
+ .part-heading{margin:5mm 0 2mm;padding-bottom:1.5mm;font-size:11pt;break-after:avoid;page-break-after:avoid}
+ .part-number{flex-basis:7mm;height:7mm;border-radius:2mm}
+ .question-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:2.5mm}
+ .question-card{padding:2.5mm;border:.6pt solid #cbdcf2;border-radius:2mm;box-shadow:none;break-inside:avoid!important;page-break-inside:avoid!important}
+ .question-line{gap:2mm}.number-badge{flex-basis:7mm;height:7mm;border-radius:2mm;font-size:7.5pt}
+ .question-text{margin:1mm 0 2mm;font-size:8pt;line-height:1.32}
+ .answer-panel{display:flex!important;gap:2mm;padding:1.5mm 2mm;border-radius:2mm;break-inside:avoid}
+ .answer-icon{flex-basis:4mm;height:4mm;font-size:7pt}
+ .answer-label{margin-bottom:0;font-size:5.5pt}.answer-text{font-size:8pt}
+ footer{padding-top:4mm;font-size:7pt}.footer-rule{margin-bottom:2mm}
+ .answers-hidden .answer-panel{display:flex!important}
 }
 </style>
 </head>
-
 <body>
 
 <header class="hero">
@@ -659,34 +120,20 @@ footer strong {
       <span class="brand-logo" aria-hidden="true">S·H</span>
       <span>STUDY-HUB</span>
     </div>
-
     <div class="topbar-actions">
-      <a href="index.html" class="back-home-btn">
-        <span aria-hidden="true">←</span> Back to Home
-      </a>
-
-      <button class="export-btn" id="exportBtn" type="button">
-        <svg width="19" height="19" viewBox="0 0 24 24"
-             fill="none" aria-hidden="true">
-          <path d="M12 3v11m0 0 4-4m-4 4-4-4M5 16v4h14v-4"
-                stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        EXPORT PDF
-      </button>
+      <a href="index.html" class="back-home-btn">← Back to Home</a>
+      <button class="export-btn" id="exportBtn" type="button">⇩ EXPORT PDF</button>
     </div>
   </div>
-
   <div class="hero-content">
     <div class="eyebrow">HSC INFORMATION TECHNOLOGY</div>
     <div class="chapter-tag">CHAPTER – 1</div>
     <h1>ADVANCED WEB<br>DESIGNING</h1>
     <p class="hero-subtitle">TRUE OR FALSE</p>
-
     <div class="hero-pills">
       <span>✦ Revision-ready notes</span>
       <span>HTML · CSS · Web Design</span>
-      <span>179 Statements</span>
+      <span id="heroCount">204 Statements</span>
     </div>
   </div>
 </header>
@@ -696,39 +143,28 @@ footer strong {
     <div class="counter-wrap">
       <span class="counter-icon" aria-hidden="true">✓</span>
       <div class="counter">
-        <span id="questionCount">179 STATEMENTS</span>
+        <span id="questionCount">204 STATEMENTS</span>
         <small>Chapter 1 · Advanced Web Designing</small>
       </div>
     </div>
-
-    <button class="toggle-btn" id="toggleAnswers"
-            type="button" aria-pressed="true">
-      Hide All Answers
-    </button>
+    <button class="toggle-btn" id="toggleAnswers" type="button" aria-pressed="true">Hide All Answers</button>
   </section>
 
   <aside class="tip">
     <span class="tip-icon" aria-hidden="true">✦</span>
-    <div>
-      <strong>Revision tip</strong><br>
-      Hide the answers and decide whether each statement is True or False.
-      Reveal the answers when you finish. The answer keys below preserve
-      the supplied list and have not been independently verified.
-    </div>
+    <div><strong>Revision tip</strong><br>Hide the answers and decide whether each statement is True or False. Reveal the answers when you finish.</div>
   </aside>
 
   <div class="section-heading">
     <h2>True or False Questions</h2>
     <p>All statements are grouped by topic for easier revision.</p>
   </div>
-
   <div id="questionSections"></div>
 </main>
 
 <footer>
   <div class="footer-rule"></div>
-  <strong>© 2026–27 STUDY-HUB</strong>
-  <br>
+  <strong>© 2026–27 STUDY-HUB</strong><br>
   HSC Information Technology · Chapter 1 — Advanced Web Designing
 </footer>
 
@@ -736,332 +172,348 @@ footer strong {
 "use strict";
 
 /*
-  Statements and answers are transcribed from the supplied list.
-  The original answer keys are preserved, including questionable entries.
+This array includes the supplied earlier statements and questions 174–204.
+The original answers are preserved as supplied.
 */
 
 const sections = [
-  {
-    title: "HTML basics and input controls",
-    questions: [
-      ["HTML stands for Hyper Text Markup language.", true],
-      ["HTML is an evolving language, with different versions supporting different features.", true],
-      ["Google Chrome does not support the features of HTML5.", false],
-      ["Microsoft Edge, Safari browsers support the features of HTML5.", true],
-      ["Text, radio, checkbox, etc., are the controls used to collect user inputs.", true],
-      ["<code>&lt;input type=\"color\"&gt;</code> defines a color picker.", true],
-      ["<code>&lt;input type=\"number\"&gt;</code> defines a field for entering a URL.", false],
-      ["<code>&lt;input type=\"URL\"&gt;</code> defines a field for entering a URL.", true],
-      ["<code>&lt;input type=\"image\"&gt;</code> defines an image as a submit button.", true],
-      ["<code>&lt;input type=\"date\"&gt;</code> defines a date picker with year, month, and day.", true],
-      ["<code>&lt;input type=\"email\"&gt;</code> defines a field for entering a number.", false],
-      ["<code>&lt;input type=\"month\"&gt;</code> defines a month and year control.", true],
-      ["<code>&lt;input type=\"range\"&gt;</code> defines a range control.", true],
-      ["Default range of range control is 100–200.", false],
-      ["<code>&lt;input type=\"time\"&gt;</code> defines the control for entering a week.", false],
-      ["<code>&lt;input type=\"week\"&gt;</code> defines a week and year control.", true],
-      ["<code>&lt;input type=\"search\"&gt;</code> defines a text field for entering a search string.", true],
-      ["<code>&lt;input type=\"file\"&gt;</code> defines a file-select field and a browse button for file uploads.", true],
-      ["<code>&lt;input type=\"ter\"&gt;</code> is used to define input fields that should be disabled.", false],
-      ["The <code>enabled</code> attribute specifies that an input field should be disabled.", false],
-      ["The <code>max</code> attribute specifies the maximum value for an input field.", true],
-      ["The <code>min</code> attribute specifies the minimum value for an input field.", true],
-      ["The <code>pattern</code> attribute specifies a regular expression to check the input values.", true],
-      ["The <code>readonly</code> attribute specifies that an input field is read-only.", false],
-      ["The <code>placeholder</code> attribute acts as a temporary label showing the purpose of a text field without requiring a label tag.", true],
-      ["The <code>required</code> attribute specifies that an input field must be filled out.", true],
-      ["The <code>autocomplete</code> attribute specifies that an input field should automatically get focus when the page loads.", false],
-      ["The <code>autofocus</code> attribute specifies whether an input field should have autocomplete ON or OFF.", false],
-      ["The <code>height</code> and <code>width</code> attributes specify the height and width of an <code>&lt;input type=\"range\"&gt;</code>.", true],
-      ["The <code>multiple</code> attribute works with <code>&lt;input type=\"text\"&gt;</code> and <code>&lt;input type=\"image\"&gt;</code>.", false],
-      ["The <code>multiple</code> attribute specifies that the user is allowed to enter more than one value in the <code>&lt;input&gt;</code> element.", true],
-      ["The <code>id</code> attribute is used to identify the HTML element uniquely through the Document Object Model.", true]
-    ]
-  },
-  {
-    title: "Metadata and the meta tag",
-    questions: [
-      ["The <code>&lt;meta&gt;</code> tag is used by search engines to search information provided with the webpage.", true],
-      ["The <code>&lt;meta&gt;</code> tag is a paired tag.", false],
-      ["The <code>&lt;meta&gt;</code> tag is placed between <code>&lt;title&gt;</code> and <code>&lt;/title&gt;</code>.", false],
-      ["Metadata will not be displayed on the webpage.", true],
-      ["The <code>name</code> attribute of the <code>&lt;meta&gt;</code> tag specifies the name of metadata.", true],
-      ["The <code>content</code> attribute of the <code>&lt;meta&gt;</code> tag cannot have any textual matter related to the name.", false],
-      ["The <code>charset</code> attribute of the <code>&lt;meta&gt;</code> tag specifies the character encoding used by the document.", true],
-      ["<code>&lt;meta charset=\"UTF-8\"&gt;</code> is for Indian characters.", true],
-      ["<code>&lt;meta charset=\"Big5\"&gt;</code> is for Chinese characters.", true],
-      ["The <code>http-equiv</code> attribute of the <code>&lt;meta&gt;</code> tag is used for HTTP response message headers.", true],
-      ["<code>&lt;meta http-equiv=\"refresh\" content=\"5\"&gt;</code>", true],
-      ["<code>&lt;meta http-equiv=\"set-cookie\"&gt;</code>", true],
-      ["<code>&lt;meta http-equiv=\"Content-type\" content=\"text/html;charset=Big5\"&gt;</code>", false]
-    ]
-  },
-  {
-    title: "CSS basics and properties",
-    questions: [
-      ["CSS allows you to control the look and feel of several pages by changing a single source.", true],
-      ["A CSS rule set contains a selector and a declaration block.", true],
-      ["A selector indicates the HTML element you want to style.", true],
-      ["The declaration block can contain one or more declarations separated by a semicolon.", true],
-      ["Each declaration contains a property name and value separated by a semicolon.", false],
-      ["A property is a type of attribute of an HTML element.", true],
-      ["Values are assigned to CSS properties.", true],
-      ["There are four methods of implementing styling information in an HTML document.", false],
-      ["An inline style sheet uses the <code>style</code> attribute in the HTML start tag.", true],
-      ["Inline CSS is used to apply CSS in multiple lines or elements.", false],
-      ["<code>&lt;p style=\"color: red\"&gt;CSS&lt;/p&gt;</code> is an example of inline CSS.", true],
-      ["An internal style sheet is also known as an embedded style sheet.", true],
-      ["Internal CSS is used to apply CSS on a single document or page.", true],
-      ["Internal CSS can affect all the elements of the page.", false],
-      ["Internal CSS is written inside the <code>&lt;style&gt;</code> tag within the head section.", true],
-      ["The <code>color</code> property changes the background color of the webpage.", false],
-      ["The <code>background-color</code> property is used to set the background color of your webpage.", true],
-      ["The <code>font-weight</code> property is used to make the text bold.", true],
-      ["The <code>font-style</code> property is used to italicize text.", true],
-      ["The <code>text-decoration</code> property is used to add strike-through marks, underline, overstrike, etc.", true],
-      ["The <code>text-align</code> property is used to control the vertical alignment of block-level text.", false],
-      ["The <code>font-family</code> property is used to control the fonts.", true],
-      ["The <code>font-size</code> property allows you to control the size of the font.", true],
-      ["The <code>letter-spacing</code> property helps control the horizontal spacing between characters of text.", true],
-      ["The <code>padding</code> property is used when you want to remove blank spaces around the content of an element.", false],
-      ["The <code>border</code> property adds a border to a webpage element.", true],
-      ["The <code>background-image</code> property is used to set an image as the background of your webpage.", true],
-      ["The <code>margin-left</code> property sets the margin area on the left side of the element.", true]
-    ]
-  },
-  {
-    title: "External CSS and selectors",
-    questions: [
-      ["An external style sheet is used when you want to make changes on multiple pages.", true],
-      ["An internal style sheet facilitates changing the look of the entire website by changing just one file.", false],
-      ["External CSS uses the <code>&lt;link&gt;</code> tag.", true],
-      ["The <code>&lt;link&gt;</code> tag is placed inside the body section.", false],
-      ["An external CSS file must be saved with a <code>.css</code> extension.", true],
-      ["An external CSS file should contain HTML tags.", false],
-      ["The ID selector selects the <code>id</code> attribute of an HTML element to select a specific element.", true],
-      ["An ID is a unique element.", true],
-      ["An ID is written with a hash (<code>#</code>) character followed by the ID name.", true],
-      ["<code>#abc {color: red}</code> is an example of an ID selector.", true],
-      ["A class selector selects HTML elements with a specific class attribute.", true],
-      ["A class selector is used with a period character.", true],
-      ["A class name should start with a number.", false],
-      ["The class selector is used when you want to change a group of elements within your HTML page.", true],
-      ["<code>.abc {color: blue}</code> is an example of a class selector.", true],
-      ["The universal selector is used as a wildcard character.", true],
-      ["The universal selector selects every element on the webpage.", false],
-      ["A grouping selector is used to select elements with different style definitions.", false],
-      ["Commas are used to separate each selector in grouping.", true],
-      ["<code>h1, h2, b {color: pink}</code> is an example of a grouping selector.", false]
-    ]
-  },
-  {
-    title: "CSS positioning, float and display",
-    questions: [
-      ["The <code>position</code> property is used to set the position for an element.", true],
-      ["An element can be positioned using the <code>top</code>, <code>bottom</code>, <code>left</code>, and <code>right</code> properties.", true],
-      ["Values in positions are fixed, absolute, and relative.", true],
-      ["There are four types of positioning in CSS.", true],
-      ["Static positioning is the default position for HTML elements.", true],
-      ["Static positioning is not affected by the <code>top</code>, <code>bottom</code>, <code>left</code>, and <code>right</code> properties.", false],
-      ["Fixed positioning helps to keep the text fixed on the browser.", true],
-      ["A fixed element will not move even when the page is scrolled.", false],
-      ["The static property does not force an element into a fixed position relative to the browser window.", false],
-      ["Relative positioning is used to set the element relative to its normal position.", true],
-      ["Absolute positioning sets an element in a specific location and is not affected by the flow of the page.", true],
-      ["Absolute positioning places the element at specified coordinates relative to the screen's top-right corner.", false],
-      ["The <code>float</code> property is written in a CSS file or directly in the style of an element.", true],
-      ["The <code>float</code> property defines the flow of content.", true],
-      ["<code>float: left</code> keeps the element floating on the right side of the container.", false],
-      ["<code>float: right</code> keeps the element floating on the right side of the container.", true],
-      ["<code>float: none</code> is the default property.", true],
-      ["<code>float: none</code> shows the element as it is.", false],
-      ["The <code>display</code> property in CSS defines how components are placed on the webpage.", true],
-      ["The <code>display</code> property specifies how the element is displayed.", false],
-      ["The <code>display</code> property is used to define the display of different parts of a webpage.", true],
-      ["The <code>inline</code> value is used to display an element as a block element.", false],
-      ["The <code>block</code> value is used to display an element as an inline element.", false],
-      ["The <code>block</code> value starts on a new line and takes up the whole width of the browser window.", true],
-      ["The difference between inline and block values is that you are able to set the width and height.", true],
-      ["The element is completely removed using the <code>none</code> value.", true]
-    ]
-  },
-  {
-    title: "HTML lists",
-    questions: [
-      ["The <code>&lt;ol&gt;</code> tag defines an ordered list.", true],
-      ["Ordered lists can be numerical or alphabetical.", true],
-      ["The <code>type</code> attribute is used to define the number type for list items.", true],
-      ["The default value of the <code>type</code> attribute in an ordered list is <code>1</code>.", true],
-      ["The <code>reversed</code> attribute specifies that the items of the list are specified in reverse order.", true],
-      ["The <code>start</code> attribute specifies the starting number of the first item in an ordered list.", true],
-      ["An unordered list is created using the <code>&lt;ul&gt;</code> tag.", true],
-      ["Each list item starts with the <code>&lt;li&gt;</code> tag.", true],
-      ["List items in unordered lists are marked with numbers.", false],
-      ["By default, list items in an unordered list are marked with bullets.", true],
-      ["<code>&lt;ul type=\"disc\"&gt;</code> sets the list item marker to a bullet.", true],
-      ["<code>&lt;ul type=\"circle\"&gt;</code> sets the list item marker to a square.", false],
-      ["<code>&lt;ul type=\"square\"&gt;</code> sets the list item marker to a square.", true],
-      ["Using <code>&lt;ul type=\"none\"&gt;</code>, the list items will not be marked.", true],
-      ["HTML5 does not support bullets, circle, and square values of the <code>type</code> attribute.", false],
-      ["HTML5 does not support the <code>type</code> attribute of the <code>&lt;ul&gt;</code> tag, so you can use CSS styles.", true],
-      ["The <code>&lt;dl&gt;</code> tag is used to define a definition list.", true],
-      ["Items in a definition list can be created with the <code>&lt;dt&gt;</code> and <code>&lt;dd&gt;</code> tags.", true],
-      ["The <code>&lt;dd&gt;</code> tag defines the term's definition, whereas the <code>&lt;dt&gt;</code> tag defines the term.", false],
-      ["A list within a list is called a nested list.", true],
-      ["A list can be a single-level nested list or a multi-level list.", true]
-    ]
-  },
-  {
-    title: "Audio and video",
-    questions: [
-      ["HTML features include native audio and video support without the need for Flash.", true],
-      ["The <code>&lt;audio&gt;</code> element enables you to embed audio files on webpages.", true],
-      ["The <code>controls</code> attribute is used to display audio controls.", true],
-      ["The <code>controls</code> attribute displays play, pause buttons, etc.", true],
-      ["Using the <code>loop</code> attribute, the audio will start over again every time it is finished.", false],
-      ["The <code>muted</code> attribute specifies that the audio output should be muted.", true],
-      ["The <code>src</code> attribute specifies the URL of the audio file.", true],
-      ["<code>autoplay</code>, <code>controls</code>, and <code>muted</code> are attributes without any values.", true],
-      ["The <code>&lt;source&gt;</code> element is used to specify the audio files that the browser may use.", true],
-      ["The <code>&lt;source&gt;</code> tag is used to specify multiple media resources for media elements.", true],
-      ["Multiple audio sources can be specified so that if the browser cannot play the first source, it can try the second.", true],
-      ["The <code>&lt;video&gt;</code> tag is used to embed videos on a webpage.", true],
-      ["The <code>src</code> attribute defines the link to the video file.", true],
-      ["The <code>autoplay</code> attribute specifies that the video will start playing as soon as it is ready.", true],
-      ["The <code>controls</code> attribute specifies that video controls should be displayed.", true],
-      ["The <code>height</code> attribute sets the height of the video player.", true],
-      ["The <code>loop</code> attribute specifies that the video will start over again every time it is finished.", true],
-      ["The <code>muted</code> attribute specifies that the video output should be muted.", true],
-      ["The <code>poster</code> attribute specifies an image to be shown while the video is downloading.", true],
-      ["The <code>preload</code> attribute specifies if and how the author thinks the video should be loaded when the webpage loads.", true],
-      ["The <code>width</code> attribute sets the width of the video player.", true],
-      ["The <code>width</code> attribute sets the value in pixels.", true],
-      ["The <code>&lt;source&gt;</code> tag can specify multiple media resources for video as well as audio elements.", true]
-    ]
-  },
-  {
-    title: "Image maps and web hosting",
-    questions: [
-      ["An image with multiple hyperlinks is called an image map.", true],
-      ["An image map is used to connect links to different regions on a webpage.", true],
-      ["Clickable regions in an image map are called hotspots.", true],
-      ["Image maps are of four types.", false],
-      ["The <code>&lt;img&gt;</code> tag is used to insert an image on a webpage.", true],
-      ["An image map is created by marking certain regions on an image as clickable.", true],
-      ["To create a server-side image map, the <code>map</code> attribute of <code>&lt;img&gt;</code> is used.", false],
-      ["The <code>usemap</code> attribute acts as a pointer, indicating that the image is a client-side image map.", true],
-      ["The <code>name</code> attribute specifies the name of the image used for the client-side image map.", true],
-      ["The <code>&lt;map&gt;</code> tag is used to create a client-side image map.", true],
-      ["The <code>usemap</code> attribute is used with the <code>&lt;map&gt;</code> tag.", true],
-      ["The <code>&lt;area&gt;</code> tag specifies clickable regions.", true],
-      ["The <code>&lt;area&gt;</code> tag is a paired tag.", false],
-      ["The <code>&lt;map&gt;</code> tag is a paired tag.", true],
-      ["A given <code>&lt;map&gt;</code> element can contain multiple <code>&lt;area&gt;</code> elements within it.", true],
-      ["The <code>href</code> attribute specifies the URL to which the clickable region within the image map navigates.", false]
-    ]
-  }
+{
+ title:"HTML basics and input controls",
+ questions:[
+ ["HTML stands for Hyper Text Markup language.",true],
+ ["HTML is an evolving language, with different versions supporting different features.",true],
+ ["Google Chrome does not support the features of HTML5.",false],
+ ["Microsoft Edge, Safari browsers support the features of HTML5.",true],
+ ["Text, radio, checkbox, etc., are the controls used to collect user inputs.",true],
+ ["<code>&lt;input type=\"color\"&gt;</code> defines a color picker.",true],
+ ["<code>&lt;input type=\"number\"&gt;</code> defines a field for entering a URL.",false],
+ ["<code>&lt;input type=\"URL\"&gt;</code> defines a field for entering a URL.",true],
+ ["<code>&lt;input type=\"image\"&gt;</code> defines an image as a submit button.",true],
+ ["<code>&lt;input type=\"date\"&gt;</code> defines a date picker with year, month, and day.",true],
+ ["<code>&lt;input type=\"email\"&gt;</code> defines a field for entering a number.",false],
+ ["<code>&lt;input type=\"month\"&gt;</code> defines a month and year control.",true],
+ ["<code>&lt;input type=\"range\"&gt;</code> defines a range control.",true],
+ ["Default range of range control is 100–200.",false],
+ ["<code>&lt;input type=\"time\"&gt;</code> defines the control for entering a week.",false],
+ ["<code>&lt;input type=\"week\"&gt;</code> defines a week and year control.",true],
+ ["<code>&lt;input type=\"search\"&gt;</code> defines a text field for entering a search string.",true],
+ ["<code>&lt;input type=\"file\"&gt;</code> defines a file-select field and a browse button for file uploads.",true],
+ ["<code>&lt;input type=\"ter\"&gt;</code> is used to define input fields that should be disabled.",false],
+ ["The <code>enabled</code> attribute specifies that an input field should be disabled.",false],
+ ["The <code>max</code> attribute specifies the maximum value for an input field.",true],
+ ["The <code>min</code> attribute specifies the minimum value for an input field.",true],
+ ["The <code>pattern</code> attribute specifies a regular expression to check the input values.",true],
+ ["The <code>readonly</code> attribute specifies that an input field is read-only.",false],
+ ["The <code>placeholder</code> attribute acts as a temporary label showing the purpose of a text field without requiring a label tag.",true],
+ ["The <code>required</code> attribute specifies that an input field must be filled out.",true],
+ ["The <code>autocomplete</code> attribute specifies that an input field should automatically get focus when the page loads.",false],
+ ["The <code>autofocus</code> attribute specifies whether an input field should have autocomplete ON or OFF.",false],
+ ["The <code>height</code> and <code>width</code> attributes specify the height and width of an <code>&lt;input type=\"range\"&gt;</code>.",true],
+ ["The <code>multiple</code> attribute works with <code>&lt;input type=\"text\"&gt;</code> and <code>&lt;input type=\"image\"&gt;</code>.",false],
+ ["The <code>multiple</code> attribute specifies that the user is allowed to enter more than one value in the <code>&lt;input&gt;</code> element.",true],
+ ["The <code>id</code> attribute is used to identify the HTML element uniquely through the Document Object Model.",true]
+ ]
+},
+{
+ title:"Metadata and the meta tag",
+ questions:[
+ ["The <code>&lt;meta&gt;</code> tag is used by search engines to search information provided with the webpage.",true],
+ ["The <code>&lt;meta&gt;</code> tag is a paired tag.",false],
+ ["The <code>&lt;meta&gt;</code> tag is placed between <code>&lt;title&gt;</code> and <code>&lt;/title&gt;</code>.",false],
+ ["Metadata will not be displayed on the webpage.",true],
+ ["The <code>name</code> attribute of the <code>&lt;meta&gt;</code> tag specifies the name of metadata.",true],
+ ["The <code>content</code> attribute of the <code>&lt;meta&gt;</code> tag cannot have any textual matter related to the name.",false],
+ ["The <code>charset</code> attribute of the <code>&lt;meta&gt;</code> tag specifies the character encoding used by the document.",true],
+ ["<code>&lt;meta charset=\"UTF-8\"&gt;</code> is for Indian characters.",true],
+ ["<code>&lt;meta charset=\"Big5\"&gt;</code> is for Chinese characters.",true],
+ ["The <code>http-equiv</code> attribute of the <code>&lt;meta&gt;</code> tag is used for HTTP response message headers.",true],
+ ["<code>&lt;meta http-equiv=\"refresh\" content=\"5\"&gt;</code>",true],
+ ["<code>&lt;meta http-equiv=\"set-cookie\"&gt;</code>",true],
+ ["<code>&lt;meta http-equiv=\"Content-type\" content=\"text/html;charset=Big5\"&gt;</code>",false]
+ ]
+},
+{
+ title:"CSS basics and properties",
+ questions:[
+ ["CSS allows you to control the look and feel of several pages by changing a single source.",true],
+ ["A CSS rule set contains a selector and a declaration block.",true],
+ ["A selector indicates the HTML element you want to style.",true],
+ ["The declaration block can contain one or more declarations separated by a semicolon.",true],
+ ["Each declaration contains a property name and value separated by a semicolon.",false],
+ ["A property is a type of attribute of an HTML element.",true],
+ ["Values are assigned to CSS properties.",true],
+ ["There are four methods of implementing styling information in an HTML document.",false],
+ ["An inline style sheet uses the <code>style</code> attribute in the HTML start tag.",true],
+ ["Inline CSS is used to apply CSS in multiple lines or elements.",false],
+ ["<code>&lt;p style=\"color: red\"&gt;CSS&lt;/p&gt;</code> is an example of inline CSS.",true],
+ ["An internal style sheet is also known as an embedded style sheet.",true],
+ ["Internal CSS is used to apply CSS on a single document or page.",true],
+ ["Internal CSS can affect all the elements of the page.",false],
+ ["Internal CSS is written inside the <code>&lt;style&gt;</code> tag within the head section.",true],
+ ["The <code>color</code> property changes the background color of the webpage.",false],
+ ["The <code>background-color</code> property is used to set the background color of your webpage.",true],
+ ["The <code>font-weight</code> property is used to make the text bold.",true],
+ ["The <code>font-style</code> property is used to italicize text.",true],
+ ["The <code>text-decoration</code> property is used to add strike-through marks, underline, overstrike, etc.",true],
+ ["The <code>text-align</code> property is used to control the vertical alignment of block-level text.",false],
+ ["The <code>font-family</code> property is used to control the fonts.",true],
+ ["The <code>font-size</code> property allows you to control the size of the font.",true],
+ ["The <code>letter-spacing</code> property helps control the horizontal spacing between characters of text.",true],
+ ["The <code>padding</code> property is used when you want to remove blank spaces around the content of an element.",false],
+ ["The <code>border</code> property adds a border to a webpage element.",true],
+ ["The <code>background-image</code> property is used to set an image as the background of your webpage.",true],
+ ["The <code>margin-left</code> property sets the margin area on the left side of the element.",true]
+ ]
+},
+{
+ title:"External CSS and selectors",
+ questions:[
+ ["An external style sheet is used when you want to make changes on multiple pages.",true],
+ ["An internal style sheet facilitates changing the look of the entire website by changing just one file.",false],
+ ["External CSS uses the <code>&lt;link&gt;</code> tag.",true],
+ ["The <code>&lt;link&gt;</code> tag is placed inside the body section.",false],
+ ["An external CSS file must be saved with a <code>.css</code> extension.",true],
+ ["An external CSS file should contain HTML tags.",false],
+ ["The ID selector selects the <code>id</code> attribute of an HTML element to select a specific element.",true],
+ ["An ID is a unique element.",true],
+ ["An ID is written with a hash (<code>#</code>) character followed by the ID name.",true],
+ ["<code>#abc {color: red}</code> is an example of an ID selector.",true],
+ ["A class selector selects HTML elements with a specific class attribute.",true],
+ ["A class selector is used with a period character.",true],
+ ["A class name should start with a number.",false],
+ ["The class selector is used when you want to change a group of elements within your HTML page.",true],
+ ["<code>.abc {color: blue}</code> is an example of a class selector.",true],
+ ["The universal selector is used as a wildcard character.",true],
+ ["The universal selector selects every element on the webpage.",false],
+ ["A grouping selector is used to select elements with different style definitions.",false],
+ ["Commas are used to separate each selector in grouping.",true],
+ ["<code>h1, h2, b {color: pink}</code> is an example of a grouping selector.",false]
+ ]
+},
+{
+ title:"CSS positioning, float and display",
+ questions:[
+ ["The <code>position</code> property is used to set the position for an element.",true],
+ ["An element can be positioned using the <code>top</code>, <code>bottom</code>, <code>left</code>, and <code>right</code> properties.",true],
+ ["Values in positions are fixed, absolute, and relative.",true],
+ ["There are four types of positioning in CSS.",true],
+ ["Static positioning is the default position for HTML elements.",true],
+ ["Static positioning is not affected by the <code>top</code>, <code>bottom</code>, <code>left</code>, and <code>right</code> properties.",false],
+ ["Fixed positioning helps to keep the text fixed on the browser.",true],
+ ["A fixed element will not move even when the page is scrolled.",false],
+ ["The static property does not force an element into a fixed position relative to the browser window.",false],
+ ["Relative positioning is used to set the element relative to its normal position.",true],
+ ["Absolute positioning sets an element in a specific location and is not affected by the flow of the page.",true],
+ ["Absolute positioning places the element at specified coordinates relative to the screen's top-right corner.",false],
+ ["The <code>float</code> property is written in a CSS file or directly in the style of an element.",true],
+ ["The <code>float</code> property defines the flow of content.",true],
+ ["<code>float: left</code> keeps the element floating on the right side of the container.",false],
+ ["<code>float: right</code> keeps the element floating on the right side of the container.",true],
+ ["<code>float: none</code> is the default property.",true],
+ ["<code>float: none</code> shows the element as it is.",false],
+ ["The <code>display</code> property in CSS defines how components are placed on the webpage.",true],
+ ["The <code>display</code> property specifies how the element is displayed.",false],
+ ["The <code>display</code> property is used to define the display of different parts of a webpage.",true],
+ ["The <code>inline</code> value is used to display an element as a block element.",false],
+ ["The <code>block</code> value is used to display an element as an inline element.",false],
+ ["The <code>block</code> value starts on a new line and takes up the whole width of the browser window.",true],
+ ["The difference between inline and block values is that you are able to set the width and height.",true],
+ ["The element is completely removed using the <code>none</code> value.",true]
+ ]
+},
+{
+ title:"HTML lists",
+ questions:[
+ ["The <code>&lt;ol&gt;</code> tag defines an ordered list.",true],
+ ["Ordered lists can be numerical or alphabetical.",true],
+ ["The <code>type</code> attribute is used to define the number type for list items.",true],
+ ["The default value of the <code>type</code> attribute in an ordered list is <code>1</code>.",true],
+ ["The <code>reversed</code> attribute specifies that the items of the list are specified in reverse order.",true],
+ ["The <code>start</code> attribute specifies the starting number of the first item in an ordered list.",true],
+ ["An unordered list is created using the <code>&lt;ul&gt;</code> tag.",true],
+ ["Each list item starts with the <code>&lt;li&gt;</code> tag.",true],
+ ["List items in unordered lists are marked with numbers.",false],
+ ["By default, list items in an unordered list are marked with bullets.",true],
+ ["<code>&lt;ul type=\"disc\"&gt;</code> sets the list item marker to a bullet.",true],
+ ["<code>&lt;ul type=\"circle\"&gt;</code> sets the list item marker to a square.",false],
+ ["<code>&lt;ul type=\"square\"&gt;</code> sets the list item marker to a square.",true],
+ ["Using <code>&lt;ul type=\"none\"&gt;</code>, the list items will not be marked.",true],
+ ["HTML5 does not support bullets, circle, and square values of the <code>type</code> attribute.",false],
+ ["HTML5 does not support the <code>type</code> attribute of the <code>&lt;ul&gt;</code> tag, so you can use CSS styles.",true],
+ ["The <code>&lt;dl&gt;</code> tag is used to define a definition list.",true],
+ ["Items in a definition list can be created with the <code>&lt;dt&gt;</code> and <code>&lt;dd&gt;</code> tags.",true],
+ ["The <code>&lt;dd&gt;</code> tag defines the term's definition, whereas the <code>&lt;dt&gt;</code> tag defines the term.",false],
+ ["A list within a list is called a nested list.",true],
+ ["A list can be a single-level nested list or a multi-level list.",true]
+ ]
+},
+{
+ title:"Audio and video",
+ questions:[
+ ["HTML features include native audio and video support without the need for Flash.",true],
+ ["The <code>&lt;audio&gt;</code> element enables you to embed audio files on webpages.",true],
+ ["The <code>controls</code> attribute is used to display audio controls.",true],
+ ["The <code>controls</code> attribute displays play, pause buttons, etc.",true],
+ ["Using the <code>loop</code> attribute, the audio will start over again every time it is finished.",false],
+ ["The <code>muted</code> attribute specifies that the audio output should be muted.",true],
+ ["The <code>src</code> attribute specifies the URL of the audio file.",true],
+ ["<code>autoplay</code>, <code>controls</code>, and <code>muted</code> are attributes without any values.",true],
+ ["The <code>&lt;source&gt;</code> element is used to specify the audio files that the browser may use.",true],
+ ["The <code>&lt;source&gt;</code> tag is used to specify multiple media resources for media elements.",true],
+ ["Multiple audio sources can be specified so that if the browser cannot play the first source, it can try the second.",true],
+ ["The <code>&lt;video&gt;</code> tag is used to embed videos on a webpage.",true],
+ ["The <code>src</code> attribute defines the link to the video file.",true],
+ ["The <code>autoplay</code> attribute specifies that the video will start playing as soon as it is ready.",true],
+ ["The <code>controls</code> attribute specifies that video controls should be displayed.",true],
+ ["The <code>height</code> attribute sets the height of the video player.",true],
+ ["The <code>loop</code> attribute specifies that the video will start over again every time it is finished.",true],
+ ["The <code>muted</code> attribute specifies that the video output should be muted.",true],
+ ["The <code>poster</code> attribute specifies an image to be shown while the video is downloading.",true],
+ ["The <code>preload</code> attribute specifies if and how the author thinks the video should be loaded when the webpage loads.",true],
+ ["The <code>width</code> attribute sets the width of the video player.",true],
+ ["The <code>width</code> attribute sets the value in pixels.",true],
+ ["The <code>&lt;source&gt;</code> tag can specify multiple media resources for video as well as audio elements.",true]
+ ]
+},
+{
+ title:"Image maps, iframes and web hosting",
+ questions:[
+ ["An image with multiple hyperlinks is called an image map.",true],
+ ["An image map is used to connect links to different regions on a webpage.",true],
+ ["Clickable regions in an image map are called hotspots.",true],
+ ["Image maps are of four types.",false],
+ ["The <code>&lt;img&gt;</code> tag is used to insert an image on a webpage.",true],
+ ["An image map is created by marking certain regions on an image as clickable.",true],
+ ["To create a server-side image map, the <code>map</code> attribute of <code>&lt;img&gt;</code> is used.",false],
+ ["The <code>usemap</code> attribute acts as a pointer, indicating that the image is a client-side image map.",true],
+ ["The <code>name</code> attribute specifies the name of the image used for the client-side image map.",true],
+ ["The <code>&lt;map&gt;</code> tag is used to create a client-side image map.",true],
+ ["The <code>usemap</code> attribute is used with the <code>&lt;map&gt;</code> tag.",true],
+ ["The <code>&lt;area&gt;</code> tag specifies clickable regions.",true],
+ ["The <code>&lt;area&gt;</code> tag is a paired tag.",false],
+ ["The <code>&lt;map&gt;</code> tag is a paired tag.",true],
+ ["A given <code>&lt;map&gt;</code> element can contain multiple <code>&lt;area&gt;</code> elements within it.",true],
+ ["The <code>href</code> attribute specifies the URL to which the clickable region within the image map navigates.",false],
+
+ ["The shape attribute of the area element can have values such as rect, circle and poly.",true],
+ ["The coords attribute specifies the coordinates of a clickable region in an image map.",true],
+ ["A rectangular clickable area is defined using four coordinates.",true],
+ ["The circle shape defines a circular clickable region in an image map.",true],
+ ["A circular area requires only two coordinates to be specified.",false],
+ ["The poly shape is used to define a polygonal clickable region using multiple points.",true],
+ ["Coordinates are not required when defining a default area in an image map.",true],
+ ["The alt attribute can provide alternative text for a clickable area.",true],
+ ["The href attribute provides alternative text to a clickable region.",false],
+ ["The iframe element is used to create an inline frame in an HTML document.",true],
+ ["Inline frames can be used to display embedded content, including online advertisements.",true],
+ ["The src attribute of an iframe specifies the address of the embedded document.",true],
+ ["The height attribute of an iframe specifies the width of the iframe.",false],
+ ["The width attribute specifies the width of an iframe.",true],
+ ["The name attribute can specify a name for an iframe.",true],
+ ["The srcdoc attribute can specify HTML content to display inside an iframe.",true],
+ ["A web server is the service of providing storage space.",false],
+ ["A website can be made available on the internet with the help of web hosting.",true],
+ ["Companies that provide web hosting services are called web hosts.",true],
+ ["Web hosts own or manage web servers that host websites.",true],
+ ["Shared hosting is generally a cost-effective hosting option.",true],
+ ["Free hosting always gives a website owner their own registered domain name.",false],
+ ["Websites that provide free hosting for a limited period are called free hosting services.",true],
+ ["Dedicated hosting is a paid hosting option often used for large websites.",true],
+ ["A person can purchase their own web server space, but this is generally an expensive way to publish a website.",true]
+ ]
+}
 ];
 
-const sectionsContainer = document.getElementById("questionSections");
-const toggleButton = document.getElementById("toggleAnswers");
-const exportButton = document.getElementById("exportBtn");
-const totalQuestions = sections.reduce(
-  (total, section) => total + section.questions.length, 0
-);
+const sectionsContainer=document.getElementById("questionSections");
+const toggleButton=document.getElementById("toggleAnswers");
+const exportButton=document.getElementById("exportBtn");
 
-document.getElementById("questionCount").textContent =
-  totalQuestions + " STATEMENTS";
+const totalQuestions=sections.reduce((total,section)=>total+section.questions.length,0);
+document.getElementById("questionCount").textContent=totalQuestions+" STATEMENTS";
+document.getElementById("heroCount").textContent=totalQuestions+" Statements";
 
-let questionNumber = 0;
+let questionNumber=0;
 
-sections.forEach((section, sectionIndex) => {
-  const heading = document.createElement("h3");
-  heading.className = "part-heading";
+sections.forEach((section,sectionIndex)=>{
+  const heading=document.createElement("h3");
+  heading.className="part-heading";
 
-  const partNumber = document.createElement("span");
-  partNumber.className = "part-number";
-  partNumber.textContent = String(sectionIndex + 1).padStart(2, "0");
+  const partNumber=document.createElement("span");
+  partNumber.className="part-number";
+  partNumber.textContent=String(sectionIndex+1).padStart(2,"0");
 
-  const headingText = document.createElement("span");
-  headingText.textContent = section.title;
-
-  heading.append(partNumber, headingText);
+  const headingText=document.createElement("span");
+  headingText.textContent=section.title;
+  heading.append(partNumber,headingText);
   sectionsContainer.appendChild(heading);
 
-  const grid = document.createElement("section");
-  grid.className = "question-grid";
-  grid.setAttribute("aria-label", section.title);
+  const grid=document.createElement("section");
+  grid.className="question-grid";
+  grid.setAttribute("aria-label",section.title);
 
-  section.questions.forEach(([statement, answer]) => {
+  section.questions.forEach(([statement,answer])=>{
     questionNumber++;
 
-    const card = document.createElement("article");
-    card.className = "question-card";
+    const card=document.createElement("article");
+    card.className="question-card";
 
-    const questionLine = document.createElement("div");
-    questionLine.className = "question-line";
+    const questionLine=document.createElement("div");
+    questionLine.className="question-line";
 
-    const numberBadge = document.createElement("span");
-    numberBadge.className = "number-badge";
-    numberBadge.textContent = String(questionNumber).padStart(3, "0");
+    const numberBadge=document.createElement("span");
+    numberBadge.className="number-badge";
+    numberBadge.textContent=String(questionNumber).padStart(3,"0");
 
-    const questionText = document.createElement("p");
-    questionText.className = "question-text";
+    const questionText=document.createElement("p");
+    questionText.className="question-text";
+    questionText.innerHTML=statement;
 
-    // Statements contain trusted <code> formatting from this page.
-    questionText.innerHTML = statement;
+    questionLine.append(numberBadge,questionText);
 
-    questionLine.append(numberBadge, questionText);
+    const answerPanel=document.createElement("div");
+    answerPanel.className="answer-panel "+(answer?"true":"false");
 
-    const answerPanel = document.createElement("div");
-    answerPanel.className = "answer-panel " + (answer ? "true" : "false");
+    const answerIcon=document.createElement("span");
+    answerIcon.className="answer-icon";
+    answerIcon.textContent=answer?"✓":"✕";
 
-    const answerIcon = document.createElement("span");
-    answerIcon.className = "answer-icon";
-    answerIcon.textContent = answer ? "✓" : "✕";
+    const answerContent=document.createElement("div");
 
-    const answerContent = document.createElement("div");
+    const answerLabel=document.createElement("span");
+    answerLabel.className="answer-label";
+    answerLabel.textContent="ANSWER";
 
-    const answerLabel = document.createElement("span");
-    answerLabel.className = "answer-label";
-    answerLabel.textContent = "ANSWER";
+    const answerText=document.createElement("p");
+    answerText.className="answer-text";
+    answerText.textContent=answer?"TRUE":"FALSE";
 
-    const answerText = document.createElement("p");
-    answerText.className = "answer-text";
-    answerText.textContent = answer ? "TRUE" : "FALSE";
-
-    answerContent.append(answerLabel, answerText);
-    answerPanel.append(answerIcon, answerContent);
-    card.append(questionLine, answerPanel);
+    answerContent.append(answerLabel,answerText);
+    answerPanel.append(answerIcon,answerContent);
+    card.append(questionLine,answerPanel);
     grid.appendChild(card);
   });
 
   sectionsContainer.appendChild(grid);
 });
 
-function setAnswersVisible(visible) {
-  document.body.classList.toggle("answers-hidden", !visible);
-
-  toggleButton.textContent = visible
-    ? "Hide All Answers"
-    : "Show All Answers";
-
-  toggleButton.setAttribute("aria-pressed", String(visible));
+function setAnswersVisible(visible){
+  document.body.classList.toggle("answers-hidden",!visible);
+  toggleButton.textContent=visible?"Hide All Answers":"Show All Answers";
+  toggleButton.setAttribute("aria-pressed",String(visible));
 }
 
-toggleButton.addEventListener("click", () => {
-  const hidden = document.body.classList.contains("answers-hidden");
-  setAnswersVisible(hidden);
+toggleButton.addEventListener("click",()=>{
+  const currentlyHidden=document.body.classList.contains("answers-hidden");
+  setAnswersVisible(currentlyHidden);
 });
 
-exportButton.addEventListener("click", () => {
+exportButton.addEventListener("click",()=>{
   setAnswersVisible(true);
   window.print();
 });
 
-window.addEventListener("beforeprint", () => setAnswersVisible(true));
-window.addEventListener("afterprint", () => setAnswersVisible(true));
+window.addEventListener("beforeprint",()=>setAnswersVisible(true));
+window.addEventListener("afterprint",()=>setAnswersVisible(true));
 </script>
-
 </body>
 </html>
