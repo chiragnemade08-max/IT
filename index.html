@@ -1,0 +1,876 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#103b70">
+    <title>STUDY-HUB | HSC Information Technology</title>
+
+    <style>
+        :root {
+            --navy: #103b70;
+            --blue: #1769c2;
+            --light-blue: #edf5ff;
+            --white: #ffffff;
+            --text: #182b45;
+            --muted: #66758a;
+            --border: #dce7f5;
+            --shadow: 0 12px 35px rgba(16, 59, 112, 0.09);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #f7faff;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-container {
+            max-width: 1180px;
+            min-height: 76px;
+            padding: 12px 24px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .brand-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 14px;
+            display: grid;
+            place-items: center;
+            color: white;
+            background: linear-gradient(135deg, #103b70, #2684ed);
+            font-size: 23px;
+            font-weight: 800;
+        }
+
+        .brand-name {
+            color: var(--navy);
+            font-size: 21px;
+            font-weight: 850;
+            letter-spacing: 1px;
+            line-height: 1.2;
+        }
+
+        .brand-subtitle {
+            color: var(--muted);
+            font-size: 10px;
+            letter-spacing: 1.4px;
+            margin-top: 4px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 26px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 650;
+            color: #425570;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--blue);
+        }
+
+        .nav-button {
+            background: var(--navy);
+            color: white !important;
+            padding: 11px 19px;
+            border-radius: 10px;
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(120deg, #103b70, #1769c2 70%, #459cf2);
+            color: white;
+        }
+
+        .hero::before,
+        .hero::after {
+            content: "";
+            position: absolute;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero::before {
+            width: 420px;
+            height: 420px;
+            top: -230px;
+            right: -50px;
+        }
+
+        .hero::after {
+            width: 320px;
+            height: 320px;
+            bottom: -230px;
+            right: 180px;
+        }
+
+        .hero-container {
+            max-width: 1180px;
+            min-height: 390px;
+            margin: auto;
+            padding: 76px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 36px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 690px;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            padding: 7px 13px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 {
+            font-size: clamp(36px, 5vw, 60px);
+            line-height: 1.12;
+            letter-spacing: -1.7px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #c7e3ff;
+        }
+
+        .hero p {
+            max-width: 590px;
+            color: #e0edff;
+            font-size: 16px;
+            margin-bottom: 28px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .button {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            border-radius: 11px;
+            padding: 13px 21px;
+            font-size: 14px;
+            font-weight: 750;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+        }
+
+        .button-white {
+            background: white;
+            color: var(--navy);
+        }
+
+        .button-outline {
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.45);
+        }
+
+        .hero-card {
+            width: 250px;
+            flex-shrink: 0;
+            padding: 28px;
+            border-radius: 22px;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-card-icon {
+            font-size: 45px;
+            margin-bottom: 14px;
+        }
+
+        .hero-card h3 {
+            font-size: 19px;
+            margin-bottom: 8px;
+        }
+
+        .hero-card p {
+            font-size: 13px;
+            margin: 0;
+        }
+
+        .section {
+            max-width: 1180px;
+            margin: auto;
+            padding: 75px 24px;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 38px;
+        }
+
+        .section-label {
+            color: var(--blue);
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 2px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .section-heading h2 {
+            color: var(--navy);
+            font-size: clamp(27px, 4vw, 38px);
+            letter-spacing: -0.8px;
+            margin-bottom: 10px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            max-width: 600px;
+            margin: auto;
+            font-size: 14px;
+        }
+
+        .chapter-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 25px;
+            align-items: start;
+        }
+
+        .chapter-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .chapter-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 42px rgba(16, 59, 112, 0.13);
+        }
+
+        .chapter-header {
+            padding: 26px;
+            background: linear-gradient(120deg, #edf5ff, #f9fbff);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .chapter-number {
+            display: inline-block;
+            padding: 5px 10px;
+            background: #d8eaff;
+            color: var(--navy);
+            border-radius: 7px;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.7px;
+            margin-bottom: 14px;
+        }
+
+        .chapter-header h3 {
+            color: var(--navy);
+            font-size: 23px;
+            line-height: 1.3;
+            margin-bottom: 9px;
+        }
+
+        .chapter-header p {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .topic-area {
+            padding: 24px;
+        }
+
+        .topic-heading {
+            font-size: 12px;
+            font-weight: 800;
+            color: #728198;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .topic-list {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 11px;
+        }
+
+        .topic-list a {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            min-height: 54px;
+            padding: 12px;
+            background: #f7faff;
+            color: #244568;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 700;
+            border: 1px solid #e3ecf8;
+            border-radius: 10px;
+            transition: 0.22s ease;
+        }
+
+        .topic-list a:hover {
+            background: var(--navy);
+            color: white;
+            border-color: var(--navy);
+            transform: translateY(-2px);
+        }
+
+        .topic-icon {
+            width: 27px;
+            height: 27px;
+            display: grid;
+            place-items: center;
+            flex-shrink: 0;
+            border-radius: 8px;
+            background: #e4efff;
+            color: var(--blue);
+            font-size: 13px;
+        }
+
+        .topic-list a:hover .topic-icon {
+            background: rgba(255, 255, 255, 0.16);
+            color: white;
+        }
+
+        .revision-box {
+            margin-top: 45px;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            background: linear-gradient(110deg, #103b70, #1769c2);
+            color: white;
+            border-radius: 18px;
+        }
+
+        .revision-box h3 {
+            font-size: 22px;
+            margin-bottom: 7px;
+        }
+
+        .revision-box p {
+            color: #dceaff;
+            font-size: 13px;
+        }
+
+        .revision-box a {
+            flex-shrink: 0;
+            background: white;
+            color: var(--navy);
+            padding: 12px 18px;
+            border-radius: 10px;
+            font-weight: 750;
+            font-size: 13px;
+            text-decoration: none;
+        }
+
+        .features {
+            background: white;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .feature-card {
+            padding: 25px;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            background: #fbfdff;
+        }
+
+        .feature-icon {
+            width: 45px;
+            height: 45px;
+            display: grid;
+            place-items: center;
+            border-radius: 13px;
+            background: #e6f1ff;
+            font-size: 22px;
+            margin-bottom: 16px;
+        }
+
+        .feature-card h3 {
+            color: var(--navy);
+            font-size: 17px;
+            margin-bottom: 8px;
+        }
+
+        .feature-card p {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        footer {
+            padding: 28px 24px;
+            background: #0b2b50;
+            color: #d8e6f7;
+        }
+
+        .footer-container {
+            max-width: 1180px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+        }
+
+        .footer-brand {
+            font-size: 16px;
+            font-weight: 850;
+            letter-spacing: 1px;
+        }
+
+        .footer-note {
+            color: #b7cbe3;
+            font-size: 12px;
+        }
+
+        .back-to-top {
+            color: white;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        @media (max-width: 850px) {
+            .hero-card {
+                display: none;
+            }
+
+            .chapter-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .nav-container {
+                padding: 12px 16px;
+                min-height: 68px;
+            }
+
+            .brand-icon {
+                width: 40px;
+                height: 40px;
+            }
+
+            .brand-name {
+                font-size: 18px;
+            }
+
+            .brand-subtitle {
+                font-size: 8px;
+                letter-spacing: 0.8px;
+            }
+
+            .nav-links {
+                gap: 12px;
+            }
+
+            .nav-links a {
+                font-size: 12px;
+            }
+
+            .nav-links .nav-home {
+                display: none;
+            }
+
+            .nav-button {
+                padding: 9px 12px;
+            }
+
+            .hero-container {
+                min-height: auto;
+                padding: 60px 20px;
+            }
+
+            .hero h1 {
+                font-size: 39px;
+            }
+
+            .hero p {
+                font-size: 14px;
+            }
+
+            .section {
+                padding: 55px 16px;
+            }
+
+            .chapter-header,
+            .topic-area {
+                padding: 20px;
+            }
+
+            .chapter-header h3 {
+                font-size: 21px;
+            }
+
+            .topic-list {
+                grid-template-columns: 1fr;
+            }
+
+            .topic-list a {
+                font-size: 13px;
+                min-height: 49px;
+            }
+
+            .revision-box {
+                align-items: flex-start;
+                flex-direction: column;
+                padding: 24px;
+            }
+
+            .footer-container {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition: none !important;
+                animation: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body id="top">
+
+    <!-- NAVIGATION -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a class="brand" href="index.html" aria-label="STUDY-HUB home">
+                <div class="brand-icon">S</div>
+                <div>
+                    <div class="brand-name">STUDY-HUB</div>
+                    <div class="brand-subtitle">HSC INFORMATION TECHNOLOGY</div>
+                </div>
+            </a>
+
+            <nav class="nav-links" aria-label="Main navigation">
+                <a class="nav-home" href="#top">Home</a>
+                <a href="#chapters">Chapters</a>
+                <a href="#features">Features</a>
+                <a class="nav-button" href="#chapters">Start Learning</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <div class="eyebrow">YOUR HSC IT LEARNING SPACE</div>
+
+                    <h1>
+                        Learn smarter.<br>
+                        <span>Score higher.</span>
+                    </h1>
+
+                    <p>
+                        Welcome to STUDY-HUB, your organized learning space
+                        for HSC Information Technology. Explore chapter-wise
+                        practice formats and prepare with confidence.
+                    </p>
+
+                    <div class="hero-buttons">
+                        <a class="button button-white" href="#chapters">
+                            Explore Chapters →
+                        </a>
+                        <a class="button button-outline" href="#features">
+                            Discover Features
+                        </a>
+                    </div>
+                </div>
+
+                <aside class="hero-card">
+                    <div class="hero-card-icon">📘</div>
+                    <h3>Study. Practice. Improve.</h3>
+                    <p>
+                        Choose a chapter, select a question format, and
+                        continue learning at your own pace.
+                    </p>
+                </aside>
+            </div>
+        </section>
+
+        <!-- CHAPTERS -->
+        <section class="section" id="chapters">
+            <div class="section-heading">
+                <div class="section-label">Learning Library</div>
+                <h2>Explore Your Chapters</h2>
+                <p>
+                    Select a chapter and open the format you want to practise.
+                    Each link points to its own HTML branch page.
+                </p>
+            </div>
+
+            <div class="chapter-grid">
+
+                <!-- CHAPTER 1 -->
+                <article class="chapter-card">
+                    <div class="chapter-header">
+                        <span class="chapter-number">CHAPTER 01</span>
+                        <h3>Advanced Web Design</h3>
+                        <p>
+                            Explore the chapter using different practice
+                            formats and revision activities.
+                        </p>
+                    </div>
+
+                    <div class="topic-area">
+                        <div class="topic-heading">Choose a format</div>
+
+                        <div class="topic-list">
+                            <a href="chapter1-fill-in-the-blanks.html">
+                                <span class="topic-icon">✎</span>
+                                Fill in the Blanks
+                            </a>
+
+                            <a href="chapter1-true-or-false.html">
+                                <span class="topic-icon">✓</span>
+                                True or False
+                            </a>
+
+                            <a href="chapter1-single-correct.html">
+                                <span class="topic-icon">1</span>
+                                Single Correct Answers
+                            </a>
+
+                            <a href="chapter1-two-correct.html">
+                                <span class="topic-icon">2</span>
+                                Two Correct Answers
+                            </a>
+
+                            <a href="chapter1-three-correct.html">
+                                <span class="topic-icon">3</span>
+                                Three Correct Answers
+                            </a>
+
+                            <a href="chapter1-brief-answers.html">
+                                <span class="topic-icon">≡</span>
+                                Brief Answers
+                            </a>
+
+                            <a href="chapter1-practical-program.html">
+                                <span class="topic-icon">&lt;/&gt;</span>
+                                Practical Program
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- CHAPTER 2 -->
+                <article class="chapter-card">
+                    <div class="chapter-header">
+                        <span class="chapter-number">CHAPTER 02</span>
+                        <h3>Introduction to SEO</h3>
+                        <p>
+                            Review SEO concepts with chapter-specific
+                            practice formats and activities.
+                        </p>
+                    </div>
+
+                    <div class="topic-area">
+                        <div class="topic-heading">Choose a format</div>
+
+                        <div class="topic-list">
+                            <a href="chapter2-fill-in-the-blanks.html">
+                                <span class="topic-icon">✎</span>
+                                Fill in the Blanks
+                            </a>
+
+                            <a href="chapter2-true-or-false.html">
+                                <span class="topic-icon">✓</span>
+                                True or False
+                            </a>
+
+                            <a href="chapter2-single-correct.html">
+                                <span class="topic-icon">1</span>
+                                Single Correct Answers
+                            </a>
+
+                            <a href="chapter2-two-correct.html">
+                                <span class="topic-icon">2</span>
+                                Two Correct Answers
+                            </a>
+
+                            <a href="chapter2-three-correct.html">
+                                <span class="topic-icon">3</span>
+                                Three Correct Answers
+                            </a>
+
+                            <a href="chapter2-brief-answers.html">
+                                <span class="topic-icon">≡</span>
+                                Brief Answers
+                            </a>
+
+                            <a href="chapter2-practical-program.html">
+                                <span class="topic-icon">&lt;/&gt;</span>
+                                Practical Program
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+
+            <!-- REVISION BANNER -->
+            <div class="revision-box">
+                <div>
+                    <h3>Small steps. Strong preparation.</h3>
+                    <p>
+                        Build a regular revision habit and work through
+                        your chapter formats one at a time.
+                    </p>
+                </div>
+
+                <a href="#chapters">Start Revising →</a>
+            </div>
+        </section>
+
+        <!-- FEATURES -->
+        <section class="features" id="features">
+            <div class="section">
+                <div class="section-heading">
+                    <div class="section-label">Why STUDY-HUB?</div>
+                    <h2>Designed for Focused Learning</h2>
+                    <p>
+                        A simple, organized interface to help you find
+                        your study material quickly.
+                    </p>
+                </div>
+
+                <div class="feature-grid">
+                    <article class="feature-card">
+                        <div class="feature-icon">📚</div>
+                        <h3>Chapter-wise Learning</h3>
+                        <p>
+                            Keep your study material organized by chapter
+                            and navigate directly to each format.
+                        </p>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h3>Multiple Formats</h3>
+                        <p>
+                            Access objective questions, brief answers,
+                            and practical program sections separately.
+                        </p>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon">💻</div>
+                        <h3>Study Anywhere</h3>
+                        <p>
+                            Use the responsive website on a desktop,
+                            tablet, or mobile device.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div>
+                <div class="footer-brand">STUDY-HUB</div>
+                <div class="footer-note">
+                    HSC Information Technology Learning Portal
+                </div>
+            </div>
+
+            <div class="footer-note">
+                © 2026–27 STUDY-HUB. For educational use.
+            </div>
+
+            <a class="back-to-top" href="#top">Back to Top ↑</a>
+        </div>
+    </footer>
+
+</body>
+</html>
