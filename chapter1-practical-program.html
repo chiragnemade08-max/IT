@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#102d68">
+<title>Chapter 1 — Practical Programs | STUDY-HUB</title>
+
+<style>
+:root {
+  --navy:#081b43;
+  --blue:#1746a2;
+  --royal:#2864e8;
+  --ink:#183153;
+  --muted:#61718a;
+  --border:#d6e5fb;
+  --green:#138357;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;color:var(--ink);
+  font-family:"Segoe UI",Arial,sans-serif;
+  background:linear-gradient(180deg,#edf5ff,#f8fbff 420px,#f2f6fc);
+  line-height:1.55
+}
+.hero{
+  position:relative;overflow:hidden;color:white;
+  padding:26px max(20px,calc((100% - 1200px)/2)) 55px;
+  background:
+    radial-gradient(circle at 85% 15%,#68c9ff35,transparent 28%),
+    radial-gradient(circle at 10% 100%,#276cf966,transparent 36%),
+    linear-gradient(130deg,#071633,#103574 60%,#2059bf)
+}
+.hero:before{
+  content:"";position:absolute;width:330px;height:330px;
+  right:-110px;top:-190px;border:1px solid #ffffff35;
+  border-radius:50%;box-shadow:0 0 0 35px #ffffff08,0 0 0 75px #ffffff07
+}
+.topbar,.hero-content{position:relative;z-index:1;max-width:1200px;margin:auto}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:3px}
+.brand-logo{
+  display:grid;place-items:center;width:44px;height:44px;
+  color:#153c82;background:linear-gradient(145deg,white,#bce7ff);
+  border-radius:13px;font-weight:900
+}
+.topbar-actions{display:flex;flex-wrap:wrap;gap:10px}
+.back-home-btn,.export-btn,.toggle-btn,.action-btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:11px 15px;border-radius:13px;font-size:.88rem;
+  font-weight:800;cursor:pointer;text-decoration:none
+}
+.back-home-btn{color:white;background:#ffffff12;border:1px solid #ffffff50}
+.export-btn{color:white;background:linear-gradient(135deg,#438aff,#2054d9);border:1px solid #ffffff50}
+.hero-content{margin-top:48px}
+.eyebrow{color:#c6e9ff;font-size:.8rem;font-weight:850;letter-spacing:3px}
+.chapter-tag{
+  display:inline-block;margin-top:24px;padding:7px 13px;color:#d9efff;
+  background:#ffffff12;border:1px solid #ffffff45;border-radius:30px;
+  font-size:.8rem;font-weight:800;letter-spacing:2px
+}
+h1{margin:15px 0 8px;font-size:clamp(2.3rem,6vw,4.7rem);font-weight:950;line-height:1.02;letter-spacing:-2px}
+.hero-subtitle{margin:0;color:#dceeff;font-size:clamp(1rem,2vw,1.3rem);font-weight:700;letter-spacing:2px}
+.hero-pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.hero-pills span{padding:8px 12px;color:#e8f5ff;background:#ffffff12;border:1px solid #ffffff28;border-radius:10px;font-size:.83rem}
+main{position:relative;max-width:1240px;margin:-22px auto 0;padding:0 22px 40px}
+.toolbar{
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;
+  padding:17px 20px;background:#ffffffed;border:1px solid white;
+  border-radius:18px;box-shadow:0 10px 28px #17438712
+}
+.counter-wrap{display:flex;align-items:center;gap:12px}
+.counter-icon{display:grid;place-items:center;width:43px;height:43px;border-radius:13px;background:#e8f1ff;color:#2055c9;font-size:1.3rem}
+.counter{color:#15376e;font-weight:900}
+.counter small{display:block;color:var(--muted);font-size:.78rem;font-weight:600}
+.toggle-btn,.action-btn{color:#1949a5;background:#edf4ff;border:1px solid #cbdfff}
+.tip{display:flex;gap:12px;margin:22px 0;padding:15px 17px;color:#345575;background:linear-gradient(100deg,#e4f4ff,#f3faff);border:1px solid #cce8ff;border-radius:15px}
+.tip-icon{display:grid;place-items:center;flex:0 0 30px;height:30px;color:#1766c3;background:white;border-radius:9px;font-weight:900}
+.tip strong{color:#123c79}
+.section-heading{margin:0 0 16px}
+.section-heading h2{margin:0;color:#102b5f;font-size:1.35rem}
+.section-heading p{margin:4px 0 0;color:var(--muted);font-size:.9rem}
+.question-grid{display:grid;grid-template-columns:1fr;gap:15px}
+.question-card{
+  min-width:0;padding:17px;background:white;border:1px solid var(--border);
+  border-left:4px solid var(--royal);border-radius:17px;
+  box-shadow:0 4px 15px #1d488c0b;break-inside:avoid
+}
+.card-top{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.number-badge{padding:6px 12px;color:white;background:linear-gradient(145deg,#4b8bff,#1f50c5);border-radius:10px;font-size:.82rem;font-weight:900}
+.solved{padding:4px 10px;color:#08764b;background:#e0f9eb;border-radius:20px;font-size:.7rem;font-weight:900;letter-spacing:1px}
+.question-label,.program-label{margin:13px 0 7px;font-weight:900;color:#173b78}
+.question-text{margin:0;white-space:pre-line;overflow-wrap:anywhere}
+details{margin-top:10px;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+summary{padding:12px 14px;background:#edf4ff;color:#1949a5;font-weight:800;cursor:pointer}
+pre{margin:0;padding:16px;overflow-x:auto;background:#101a2b;color:#e6edf8;white-space:pre;font:12px/1.7 Consolas,Monaco,monospace;tab-size:2}
+.actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:10px}
+.action-btn{border-radius:10px}
+.preview{margin-top:12px;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.preview iframe{display:block;width:100%;height:280px;border:0;background:white}
+footer{padding:24px 18px 30px;color:#6d7e99;text-align:center;font-size:.83rem}
+@media(min-width:750px){.question-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.question-card{padding:19px}}
+@media(max-width:700px){
+ .hero{padding:20px 16px 43px}
+ .topbar{align-items:flex-start;flex-wrap:wrap}
+ .brand{font-size:.82rem;letter-spacing:2px}
+ .brand-logo{width:37px;height:37px}
+ .back-home-btn,.export-btn{padding:10px;font-size:.76rem}
+ .hero-content{margin-top:38px}
+ main{padding:0 13px 30px}
+ .toolbar{padding:14px}
+ .question-card{padding:15px}
+}
+@page{size:A4;margin:12mm}
+@media print{
+ body{background:white;color:#142849;font-size:10pt;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+ .hero{padding:8mm;background:linear-gradient(130deg,#071735,#103574 60%,#1d55bd)!important}
+ .hero:before,.back-home-btn,.export-btn,.toggle-btn,.tip,.actions,footer{display:none!important}
+ .hero-content{margin-top:5mm}
+ h1{font-size:27pt}
+ .hero-pills{margin-top:3mm}
+ main{max-width:none;margin:5mm 0 0;padding:0}
+ .toolbar{padding:3mm;box-shadow:none}
+ .question-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:3mm}
+ .question-card{padding:3mm;box-shadow:none;border:1px solid #cbdcf2;border-left:3px solid #2864e8;break-inside:avoid}
+ .question-label,.program-label{margin:2mm 0}
+ .question-text{font-size:9pt}
+ details{border:0}
+ details>summary{display:none}
+ details:not([open])>*{display:block!important}
+ pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f1f3f6!important;color:#111!important;font-size:7pt;padding:3mm}
+ .preview{display:none!important}
+}
+</style>
+</head>
+
+<body>
+<header class="hero">
+  <div class="topbar">
+    <div class="brand">
+      <span class="brand-logo">S</span>
+      <span>STUDY-HUB</span>
+    </div>
+    <div class="topbar-actions">
+      <a href="index.html" class="back-home-btn">← Back to Home</a>
+      <button class="export-btn" onclick="exportPDF()">⇩ EXPORT PDF</button>
+    </div>
+  </div>
+
+  <div class="hero-content">
+    <div class="eyebrow">HSC INFORMATION TECHNOLOGY</div>
+    <div class="chapter-tag">CHAPTER – 1</div>
+    <h1>ADVANCED WEB<br>DESIGNING</h1>
+    <p class="hero-subtitle">PRACTICAL PROGRAMS</p>
+    <div class="hero-pills">
+      <span>✦ Revision-ready notes</span>
+      <span>HTML · CSS · Web Design</span>
+      <span>Academic Year 2026–27</span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="toolbar">
+    <div class="counter-wrap">
+      <span class="counter-icon">▤</span>
+      <div class="counter">
+        <span id="counter">12 PRACTICALS</span>
+        <small>Chapter 1 · Advanced Web Designing</small>
+      </div>
+    </div>
+    <button class="toggle-btn" id="toggleAll" onclick="toggleAll()">
+      Collapse All Code
+    </button>
+  </section>
+
+  <aside class="tip">
+    <span class="tip-icon">✦</span>
+    <div>
+      <strong>Revision tip</strong><br>
+      Read each question, try writing the program yourself, and then open
+      the code panel to check your solution. Use Export PDF to save or print.
+    </div>
+  </aside>
+
+  <div class="section-heading">
+    <h2>Practical Questions and Solutions</h2>
+    <p>Each practical includes the question, original code, copy option and preview.</p>
+  </div>
+
+  <section class="question-grid" id="practicals"></section>
+</main>
+
+<footer>
+  <strong>STUDY-HUB</strong><br>
+  HSC Information Technology · Chapter 1 — Advanced Web Designing
+</footer>
+
+<script>
+const practicals = [
+{
+q:`Write a program using HTML with following CSS specifications:
+(1) The background color of the company name should be green.
+(2) The text color of the company name should be red.
+(3) The heading should be large with font "Comic Sans MS".
+(4) The description should be in a paragraph with blue text.`,
+code:`<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>Titan Fast Track</title>
+
+<style>
+
+h1 (
+background-color: green;
+color: red;
+font-family: "Comic Sans MS', cursive, sans-serif; text-align: center;
+
+}
+
+p{
+color: blue;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>Titan FastTrack</h1>
+
+<p>
+
+EM
+
+1998 as a sub-brand of Titan Watches. In 2005, Fastrack was spun off as an independent brand targeting the urban youth and growing fashion industry in India.
+
+</p>
+
+</body>
+
+</html>`
+},
+{
+q:`Write HTML5 code with CSS as follows:
+(1) Create a form to accept name, age, and email address from the user.
+(2) Create a submit button to send the data.
+(3) The heading of the form should have an orange background color and an italic font style.`,
+code:`<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>User Registration
+Form</title>
+
+<style>
+
+h1 (
+background-color: orange;
+font-style: italic;
+text-align: center,
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>User Registration Form</h1> <form>
+
+Enter Name: <input type="text"
+name='tl"><br><br>
+
+Enter Age: <input type='number' name="age"><br><br>
+
+Enter Email: <input type='email' name='email'><br><br>
+
+<input type="submit"
+value="Submit">
+
+</form>
+
+</body>
+
+</html>`
+},
+{
+q:`Write HTML5 code with CSS as follows:
+(1) Create an ordered list with names of tourist cities.
+(2) Create an unordered list with tourist places of those cities.
+(3) Divide the lists into two sections (left and right) using CSS float.`,
+code:`<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>Tourist Destinations</title>
+
+<style>
+
+ul { float: left; width: 45%; }
+
+ol { float: right; width: 45%; }
+
+</style>
+
+</head>
+
+<body>
+
+<h1>Tourist Info</h1>
+
+<ol>
+
+<li>Paris</II>
+
+<li>London</li>
+
+<li>Mumbal</I>
+
+</ol>
+
+<u>
+
+<li>Eiffel Tower</li>
+
+<li>Big Ben</li>
+
+<li>Taj Mahal</li>
+
+</ul>
+
+</body>
+
+</html>`
+},
+{
+q:`Write a program using HTML to create an inline frame (iframe). It should contain an image as its source.`,
+code:`<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>Image Embedding</title>
+
+</head>
+
+<body>
+
+<h2>Iframe Image Display</h2>
+
+<iframe src="penguins.jpg' width="400" height="250"
+name='Img"></iframe>
+
+</body>
+
+</html>`
+},
+{
+q:`Write a program using HTML with following CSS:
+Create a form that accepts name, office contact number (compulsory), month, and number of years completed (between 1-30).
+Heading should have a solid border and red color.`,
+code:`<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>Office Details</title>
+
+<style>
+
+h1 {
+
+border: 2px solid black,
+
+color: red;
+
+text-align: center,
+
+)
+
+</style>
+
+</head>
+
+<body>
+
+<form>
+
+<h1>Office Details</h1>
+
+Enter Name: <input type="text"
+name="nm"><br><br>
+
+Office Contact: <input type="tel" pattern="[0-9](10)" required><br>
+<br>
+
+Select Month: <input
+type='month'><br><br>
+
+Years Completed: <input
+type='number' min="1" max='30">
+<br><br>
+
+<input type="submit"
+value="Submit">
+
+<input type="reset' value='Reset'>
+
+</form>
+
+</body>
+
+</html>`
+},
+{
+q:`Write a program using HTML with following CSS:
+(a) Create a form accepting name, present student count (compulsory), time, and a file to upload.
+(b) Create a submit button.
+(c) Heading should have a double border and padding.`,
+code:`<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>Students Info</title>
+
+<style>
+
+h1 {
+
+border-style: double;
+
+padding: 30px;
+
+text-align: center;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>Data Collection</h1>
+
+Build a Website
+
+Teacher Name: <input type=text >
+<br><br>
+
+Present Students: <input
+type="number" required><br><br>
+
+Select Time: <input type="time">
+<br><br>
+
+Upload File: <input type="file"><br>
+<br>
+
+<input type="submit"
+value="Submit">
+
+</form>
+
+</body>
+
+</html>`
+},
+{
+q:`Write a program using HTML with following CSS:
+(a) Form accepting name, age, date of appointment.
+(b) Submit button.
+(c) Heading with orange background and oblique font style.`,
+code:`<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>Appointment Form</title>
+
+<style>
+
+h1 {
+
+background-color: orange;
+
+font-style: oblique;
+
+text-align: center;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>User Registration Form</h1>
+
+<form>
+
+Enter Name: <input type="text">
+<br><br>
+
+Enter Age: <input type="number">
+<br><br>
+
+Select Date: <input type="date">
+<br><br>
+
+<input type="submit"
+value="Submit">
+
+</form>
+
+</body>
+
+</html>`
+},
+{
+q:`Write a program using HTML:
+(a) Heading "XII IT" in blue color.
+(b) Create an unordered list of IT topics.
+(c) Use "Comic Sans MS" font for the list.`,
+code:`<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>XII Science IT</title>
+
+<style>
+
+h1 { color: blue; text-align: center; }
+
+ul (font-family: "Comic Sans MS",
+cursive; }
+
+</style>
+
+</head>
+
+<body>
+
+<h1>XILIT</h1>
+
+<ul>
+
+<li>Advanced Web Designing</li>
+
+<li>Introduction to SEO</li>
+
+<li>Advanced JavaScript</li>
+
+<li>Server-side Scripting</li>
+
+</ul>
+
+</body>
+
+</html>`
+},
+{
+q:`Write a program using HTML:
+(a) College name background red.
+(b) College name text yellow.
+(c) College description right-aligned in a paragraph.`,
+code:`<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>College Info</title>
+
+<style>
+
+h1 {
+
+background-color: red;
+
+color: yellow;
+
+text-align: center;
+
+}
+
+p{
+
+text-align: right;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>R KT College</h1>
+
+<p>
+
+Our mission is to educate and
+empower students through modern
+resources
+and high-quality education to
+create a better society.
+
+</p>
+
+</body>
+
+</html>`
+},
+{
+q:`Design a web page that accepts personal details: name, date, month, week, and time values using HTML5 input types. Include a submit button.`,
+code:`<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>Form Elements</title>
+
+</head>
+
+<body>
+
+<h1>Personal Details</h1>
+
+<form>
+
+Name: <input type="text"
+
+name="tl"><br><br>
+
+Date: <input type="date"><br><br>
+
+Month: <input type="month"><br>
+
+<br>
+
+Week: <input type="week"><br>
+
+<br>
+
+Time: <input type="time"><br><br>
+
+<input type="submit"
+
+value="Submit">
+</form>
+
+</body>
+
+</html>`
+},
+{
+q:`Design a web page accepting name, Email, years completed (1-50), and compulsory office phone number. Use an image as a submit button.`,
+code:`<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>Office Details</title>
+
+</head>
+
+<body>
+
+<form>
+
+Name: <input type="text"><br><br>
+
+Email: <input type="email"><br>
+<br>
+
+Years: <input type="number"
+min="1" max="50"><br><br>
+
+Contact: <input type="tel" pattern="
+[0-9]{10}" required><br><br>
+
+<input type="image"
+src="submit.jpg" alt="Submit"
+width="100">
+
+</form></body>
+
+</html>`
+},
+{
+q:`Design a web page that accepts user name, file upload, color picker, website URL, and a search input. Include a submit button.`,
+code:`<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>Form Elements</title>
+
+</head>
+
+<body>
+
+<form>
+
+Name: <input type="text"><br><br>
+
+Upload File: <input type="file"><br>
+<br>
+
+Color: <input type="color"><br><br>
+
+URL: <input type="url"
+placeholder="http://example.com"><br><br>
+
+Search: <input type="search"><br>
+<br>
+
+<input type="submit"
+value="Search">
+
+</form>
+
+</body>
+
+</html>`
+}
+];
+
+const list = document.getElementById("practicals");
+const escapeHTML = s => String(s).replace(/[&<>"']/g,c=>({
+  "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+})[c]);
+
+practicals.forEach((p,i)=>{
+  const card=document.createElement("article");
+  card.className="question-card";
+  card.id="practical-"+(i+1);
+
+  const top=document.createElement("div");
+  top.className="card-top";
+  top.innerHTML=`<span class="number-badge">PRACTICAL-${i+1}</span>
+                 <span class="solved">SOLVED</span>`;
+
+  const qLabel=document.createElement("div");
+  qLabel.className="question-label";
+  qLabel.textContent="Que:";
+
+  const question=document.createElement("p");
+  question.className="question-text";
+  question.textContent=p.q;
+
+  const pLabel=document.createElement("div");
+  pLabel.className="program-label";
+  pLabel.textContent="Program (Solution - HTML Code)";
+
+  const details=document.createElement("details");
+  details.open=true;
+  details.innerHTML=`<summary>View / Hide HTML Code</summary>
+    <pre><code>${escapeHTML(p.code)}</code></pre>`;
+
+  const actions=document.createElement("div");
+  actions.className="actions";
+
+  const copy=document.createElement("button");
+  copy.className="action-btn";
+  copy.textContent="Copy Code";
+  copy.onclick=()=>copyCode(p.code,i+1);
+
+  const previewButton=document.createElement("button");
+  previewButton.className="action-btn";
+  previewButton.textContent="Preview Output";
+
+  const preview=document.createElement("div");
+  preview.className="preview";
+  preview.hidden=true;
+  const frame=document.createElement("iframe");
+  frame.title="Practical "+(i+1)+" output";
+  frame.setAttribute("sandbox","allow-forms");
+  preview.appendChild(frame);
+
+  previewButton.onclick=()=>{
+    frame.srcdoc=p.code;
+    preview.hidden=!preview.hidden;
+    previewButton.textContent=preview.hidden?"Preview Output":"Hide Preview";
+  };
+
+  actions.append(copy,previewButton);
+  card.append(top,qLabel,question,pLabel,details,actions,preview);
+  list.appendChild(card);
+});
+
+async function copyCode(code,n){
+  try{
+    await navigator.clipboard.writeText(code);
+    alert("Practical-"+n+" code copied!");
+  }catch(e){
+    const input=document.createElement("textarea");
+    input.value=code;
+    document.body.appendChild(input);
+    input.select();
+    document.execCommand("copy");
+    input.remove();
+    alert("Practical-"+n+" code copied!");
+  }
+}
+
+let expanded=true;
+function toggleAll(){
+  expanded=!expanded;
+  document.querySelectorAll("#practicals details").forEach(d=>d.open=expanded);
+  document.getElementById("toggleAll").textContent=
+    expanded?"Collapse All Code":"Expand All Code";
+}
+
+function exportPDF(){
+  document.querySelectorAll("#practicals details").forEach(d=>d.open=true);
+  window.print();
+}
+
+document.getElementById("counter").textContent=
+  practicals.length+" PRACTICALS";
+</script>
+
+</body>
+</html>
