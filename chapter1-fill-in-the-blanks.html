@@ -1,0 +1,1851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#102d68">
+<title>Chapter 1 — Advanced Web Designing | STUDY-HUB</title>
+
+<style>
+:root {
+  --navy: #081b43;
+  --blue: #1746a2;
+  --royal: #2864e8;
+  --sky: #8bd5ff;
+  --ink: #183153;
+  --muted: #61718a;
+  --border: #d6e5fb;
+  --mint: #e7fbf1;
+  --green: #138357;
+  --white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(180deg, #edf5ff, #f8fbff 420px, #f2f6fc);
+  line-height: 1.55;
+}
+
+/* HERO HEADER */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  color: white;
+  padding: 26px max(20px, calc((100% - 1200px) / 2)) 55px;
+  background:
+    radial-gradient(circle at 85% 15%, #68c9ff35, transparent 28%),
+    radial-gradient(circle at 10% 100%, #276cf966, transparent 36%),
+    linear-gradient(130deg, #071633, #103574 60%, #2059bf);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 330px;
+  height: 330px;
+  right: -110px;
+  top: -190px;
+  border: 1px solid #ffffff35;
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 35px #ffffff08,
+    0 0 0 75px #ffffff07;
+  pointer-events: none;
+}
+
+.topbar {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: 3px;
+}
+
+.brand-logo {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  color: #153c82;
+  background: linear-gradient(145deg, white, #bce7ff);
+  border-radius: 13px;
+  box-shadow: 0 5px 18px #0003;
+  letter-spacing: -1px;
+}
+
+/* TOPBAR BUTTONS */
+
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.back-home-btn,
+.export-btn,
+.toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 12px 17px;
+  border-radius: 13px;
+  font-size: .9rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s, filter .2s,
+              background .2s;
+}
+
+.back-home-btn {
+  color: white;
+  background: #ffffff12;
+  border: 1px solid #ffffff50;
+  text-decoration: none;
+}
+
+.back-home-btn:hover {
+  background: #ffffff28;
+  transform: translateY(-2px);
+}
+
+.export-btn {
+  color: white;
+  background: linear-gradient(135deg, #438aff, #2054d9);
+  border: 1px solid #ffffff50;
+  box-shadow: 0 7px 22px #001b5866;
+}
+
+.export-btn:hover,
+.toggle-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.06);
+}
+
+.back-home-btn:focus-visible,
+.export-btn:focus-visible,
+.toggle-btn:focus-visible {
+  outline: 3px solid #83d8ff;
+  outline-offset: 3px;
+}
+
+.hero-content {
+  max-width: 1200px;
+  margin: 48px auto 0;
+  position: relative;
+  z-index: 1;
+}
+
+.eyebrow {
+  color: #c6e9ff;
+  font-size: .8rem;
+  font-weight: 850;
+  letter-spacing: 3px;
+}
+
+.chapter-tag {
+  display: inline-block;
+  margin-top: 24px;
+  padding: 7px 13px;
+  color: #d9efff;
+  background: #ffffff12;
+  border: 1px solid #ffffff45;
+  border-radius: 30px;
+  font-size: .8rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+h1 {
+  margin: 15px 0 8px;
+  font-size: clamp(2.3rem, 6vw, 4.7rem);
+  font-weight: 950;
+  line-height: 1.02;
+  letter-spacing: -2px;
+}
+
+.hero-subtitle {
+  margin: 0;
+  color: #dceeff;
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.hero-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.hero-pills span {
+  padding: 8px 12px;
+  color: #e8f5ff;
+  background: #ffffff12;
+  border: 1px solid #ffffff28;
+  border-radius: 10px;
+  font-size: .83rem;
+}
+
+/* MAIN CONTENT */
+
+main {
+  position: relative;
+  max-width: 1240px;
+  margin: -22px auto 0;
+  padding: 0 22px 40px;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding: 17px 20px;
+  background: #ffffffed;
+  border: 1px solid white;
+  border-radius: 18px;
+  box-shadow: 0 10px 28px #17438712;
+}
+
+.counter-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.counter-icon {
+  display: grid;
+  place-items: center;
+  width: 43px;
+  height: 43px;
+  border-radius: 13px;
+  background: #e8f1ff;
+  color: #2055c9;
+  font-size: 1.3rem;
+}
+
+.counter {
+  color: #15376e;
+  font-weight: 900;
+}
+
+.counter small {
+  display: block;
+  color: var(--muted);
+  font-size: .78rem;
+  font-weight: 600;
+}
+
+.toggle-btn {
+  color: #1949a5;
+  background: #edf4ff;
+  border: 1px solid #cbdfff;
+}
+
+.tip {
+  display: flex;
+  gap: 12px;
+  margin: 22px 0;
+  padding: 15px 17px;
+  color: #345575;
+  background: linear-gradient(100deg, #e4f4ff, #f3faff);
+  border: 1px solid #cce8ff;
+  border-radius: 15px;
+}
+
+.tip-icon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 30px;
+  height: 30px;
+  color: #1766c3;
+  background: white;
+  border-radius: 9px;
+  font-weight: 900;
+}
+
+.tip strong {
+  color: #123c79;
+}
+
+.section-heading {
+  margin: 0 0 16px;
+}
+
+.section-heading h2 {
+  margin: 0;
+  color: #102b5f;
+  font-size: 1.35rem;
+}
+
+.section-heading p {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: .9rem;
+}
+
+/* QUESTION CARDS */
+
+.question-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 15px;
+}
+
+.question-card {
+  min-width: 0;
+  padding: 17px;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 17px;
+  box-shadow: 0 4px 15px #1d488c0b;
+  transition: transform .2s, box-shadow .2s, border-color .2s;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.question-card:hover {
+  transform: translateY(-3px);
+  border-color: #a8c9ff;
+  box-shadow: 0 12px 25px #1d488c1c;
+}
+
+.question-line {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.number-badge {
+  display: grid;
+  place-items: center;
+  flex: 0 0 38px;
+  height: 38px;
+  color: white;
+  background: linear-gradient(145deg, #4b8bff, #1f50c5);
+  border-radius: 12px;
+  font-size: .88rem;
+  font-weight: 900;
+  box-shadow: 0 5px 12px #2563eb2b;
+}
+
+.question-text {
+  margin: 5px 0 16px;
+  color: #18345f;
+  font-size: .96rem;
+  font-weight: 700;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
+.answer-panel {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 11px 12px;
+  background: linear-gradient(135deg, #e8fbf2, #f3fff9);
+  border: 1px solid #c4f0dc;
+  border-radius: 12px;
+}
+
+.check {
+  display: grid;
+  place-items: center;
+  flex: 0 0 22px;
+  height: 22px;
+  margin-top: 2px;
+  color: #08764b;
+  background: #c7f4df;
+  border-radius: 50%;
+  font-weight: 950;
+}
+
+.answer-label {
+  display: block;
+  margin-bottom: 2px;
+  color: #24825f;
+  font-size: .65rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.answer-text {
+  margin: 0;
+  color: #155d43;
+  font-size: .92rem;
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+code {
+  font-family: Consolas, "Courier New", monospace;
+  font-size: .96em;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+/* ANSWER TOGGLE */
+
+.answers-hidden .answer-panel {
+  display: none;
+}
+
+/* FOOTER */
+
+footer {
+  padding: 24px 18px 30px;
+  color: #6d7e99;
+  text-align: center;
+  font-size: .83rem;
+}
+
+footer strong {
+  color: #234a87;
+  letter-spacing: 2px;
+}
+
+.footer-rule {
+  width: 60px;
+  height: 3px;
+  margin: 0 auto 12px;
+  background: linear-gradient(90deg, #67b9ff, #2459d8);
+  border-radius: 9px;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 700px) {
+  .hero {
+    padding: 20px 16px 43px;
+  }
+
+  .topbar {
+    align-items: flex-start;
+  }
+
+  .brand {
+    gap: 8px;
+    font-size: .82rem;
+    letter-spacing: 2px;
+  }
+
+  .brand-logo {
+    width: 37px;
+    height: 37px;
+  }
+
+  .topbar-actions {
+    gap: 7px;
+  }
+
+  .back-home-btn,
+  .export-btn {
+    gap: 5px;
+    padding: 10px;
+    font-size: .76rem;
+  }
+
+  .hero-content {
+    margin-top: 38px;
+  }
+
+  main {
+    padding: 0 13px 30px;
+  }
+
+  .toolbar {
+    padding: 14px;
+  }
+
+  .question-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .question-card {
+    padding: 15px;
+  }
+
+  .section-heading {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 420px) {
+  .topbar {
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .topbar-actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
+}
+
+/* A4 PDF PRINTING */
+
+@page {
+  size: A4;
+  margin: 11mm 10mm 13mm;
+}
+
+@media print {
+  html,
+  body {
+    color: #142849 !important;
+    background: white !important;
+    font-size: 9.3pt;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .hero {
+    padding: 9mm 8mm 10mm;
+    background: linear-gradient(
+      130deg, #071735, #103574 60%, #1d55bd
+    ) !important;
+  }
+
+  .hero::before {
+    display: none;
+  }
+
+  .topbar {
+    max-width: none;
+  }
+
+  .back-home-btn,
+  .export-btn,
+  .toggle-btn {
+    display: none !important;
+  }
+
+  .hero-content {
+    margin: 8mm 0 0;
+  }
+
+  .chapter-tag {
+    margin-top: 4mm;
+  }
+
+  h1 {
+    margin: 3mm 0 1.5mm;
+    font-size: 29pt;
+  }
+
+  .hero-subtitle {
+    font-size: 12pt;
+  }
+
+  .hero-pills {
+    margin-top: 4mm;
+  }
+
+  main {
+    max-width: none;
+    margin: 5mm 0 0;
+    padding: 0;
+  }
+
+  .toolbar {
+    padding: 3mm 4mm;
+    border: 1px solid #cbdcf2;
+    box-shadow: none;
+  }
+
+  .counter-icon {
+    display: none;
+  }
+
+  .counter {
+    font-size: 10pt;
+  }
+
+  .tip {
+    margin: 4mm 0;
+    padding: 3mm 4mm;
+    background: #edf7ff !important;
+  }
+
+  .tip-icon {
+    display: none;
+  }
+
+  .section-heading {
+    margin-bottom: 3mm;
+  }
+
+  .section-heading h2 {
+    font-size: 13pt;
+  }
+
+  .question-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 3mm;
+  }
+
+  .question-card {
+    padding: 3mm;
+    border: .6pt solid #cbdcf2;
+    border-radius: 3mm;
+    box-shadow: none;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .question-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .question-line {
+    gap: 2.5mm;
+  }
+
+  .number-badge {
+    flex-basis: 7mm;
+    height: 7mm;
+    border-radius: 2mm;
+    font-size: 8pt;
+    box-shadow: none;
+  }
+
+  .question-text {
+    margin: 1mm 0 2.5mm;
+    font-size: 8.7pt;
+    line-height: 1.32;
+  }
+
+  .answer-panel {
+    display: flex !important;
+    gap: 2mm;
+    padding: 2mm 2.5mm;
+    background: #e8fbf2 !important;
+    border-color: #b8e8d0;
+    border-radius: 2mm;
+    break-inside: avoid;
+  }
+
+  .check {
+    flex-basis: 4mm;
+    height: 4mm;
+    font-size: 7pt;
+  }
+
+  .answer-label {
+    margin-bottom: 0;
+    font-size: 6pt;
+  }
+
+  .answer-text {
+    font-size: 8.3pt;
+    line-height: 1.3;
+  }
+
+  footer {
+    padding-top: 5mm;
+    font-size: 7.5pt;
+  }
+
+  .footer-rule {
+    margin-bottom: 2mm;
+  }
+
+  .question-card,
+  .answer-panel {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .answers-hidden .answer-panel {
+    display: flex !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="hero">
+  <div class="topbar">
+
+    <div class="brand">
+      <span class="brand-logo" aria-hidden="true">S·H</span>
+      <span>STUDY-HUB</span>
+    </div>
+
+    <!-- BACK HOME AND EXPORT BUTTONS -->
+    <div class="topbar-actions">
+
+      <a
+        href="index.html"
+        class="back-home-btn"
+        aria-label="Go back to STUDY-HUB home page"
+      >
+        <span aria-hidden="true">←</span>
+        Back to Home
+      </a>
+
+      <button
+        class="export-btn"
+        id="exportBtn"
+        type="button"
+        aria-label="Export all questions and answers as PDF"
+      >
+        <svg width="19" height="19" viewBox="0 0 24 24"
+             fill="none" aria-hidden="true">
+          <path d="M12 3v11m0 0 4-4m-4 4-4-4M5 16v4h14v-4"
+                stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        EXPORT PDF
+      </button>
+
+    </div>
+  </div>
+
+  <div class="hero-content">
+    <div class="eyebrow">HSC INFORMATION TECHNOLOGY</div>
+    <div class="chapter-tag">CHAPTER – 1</div>
+    <h1>ADVANCED WEB<br>DESIGNING</h1>
+    <p class="hero-subtitle">FILL IN THE BLANKS</p>
+
+    <div class="hero-pills">
+      <span>✦ Revision-ready notes</span>
+      <span>HTML · CSS · Web Design</span>
+      <span>Academic Year 2026–27</span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="toolbar" aria-label="Revision controls">
+    <div class="counter-wrap">
+      <span class="counter-icon" aria-hidden="true">▤</span>
+      <div class="counter">
+        <span id="questionCount">90 QUESTIONS</span>
+        <small>Chapter 1 · Advanced Web Designing</small>
+      </div>
+    </div>
+
+    <button
+      class="toggle-btn"
+      id="toggleAnswers"
+      type="button"
+      aria-pressed="true"
+    >Hide All Answers</button>
+  </section>
+
+  <aside class="tip">
+    <span class="tip-icon" aria-hidden="true">✦</span>
+    <div>
+      <strong>Revision tip</strong><br>
+      Hide the green answer panels and try filling in each blank
+      from memory. Reveal the answers to check your recall.
+    </div>
+  </aside>
+
+  <div class="section-heading">
+    <h2>Fill in the Blanks</h2>
+    <p>Review each question, then check the answer directly below it.</p>
+  </div>
+
+  <section
+    class="question-grid"
+    id="questionGrid"
+    aria-label="90 fill-in-the-blank questions"
+  >
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">01</span>
+        <p class="question-text">The ______ element is a starting element in an HTML document; it indicates the document type definition being used.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text"><code>&lt;!DOCTYPE html&gt;</code></p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">02</span>
+        <p class="question-text">The ______ is a tag in HTML that describes some aspects of the contents of a webpage.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text"><code>&lt;meta&gt;</code></p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">03</span>
+        <p class="question-text">The &lt;ol&gt; tag defines an ______.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">Ordered List</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">04</span>
+        <p class="question-text">An unordered list is created using the ______ tag.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text"><code>&lt;ul&gt;</code></p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">05</span>
+        <p class="question-text">The ______ element creates an inline frame.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text"><code>&lt;iframe&gt;</code></p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">06</span>
+        <p class="question-text">The ______ tag is used to specify video on an HTML document.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text"><code>&lt;video&gt;</code></p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">07</span>
+        <p class="question-text">If a web developer wants to add a description to an image, he must use the ______ attribute of the &lt;img&gt; tag.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">alt</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">08</span>
+        <p class="question-text">The ______ property is used to set the position for an element in CSS.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">position</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">09</span>
+        <p class="question-text">The ______ property defines the flow of content (left or right).</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">float</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">10</span>
+        <p class="question-text">The ______ property is used with elements that overlap with each other (z-index).</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">positioning</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">11</span>
+        <p class="question-text">HTML stands for ______.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">Hyper Text Markup Language</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">12</span>
+        <p class="question-text">The ______ is an evolving language with different versions supporting different features.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">HTML</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">13</span>
+        <p class="question-text">______ is currently used because it supports mobile technology and multimedia.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">HTML5</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">14</span>
+        <p class="question-text">The ______ tag is used to create a form for user input.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text"><code>&lt;form&gt;</code></p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">15</span>
+        <p class="question-text"><code>&lt;input type="..."&gt;</code> defines a color picker.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">color</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">16</span>
+        <p class="question-text"><code>&lt;input type="..."&gt;</code> defines a field for entering a number.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">number</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">17</span>
+        <p class="question-text"><code>&lt;input type="..."&gt;</code> defines a field for entering a URL.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">url</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">18</span>
+        <p class="question-text"><code>&lt;input type="..."&gt;</code> defines an image as a submit button.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">image</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">19</span>
+        <p class="question-text"><code>&lt;input type="..."&gt;</code> defines a date picker with year, month, and day.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">date</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">20</span>
+        <p class="question-text"><code>&lt;input type="..."&gt;</code> defines a field for an email address.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">email</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">21</span>
+        <p class="question-text"><code>&lt;input type="..."&gt;</code> defines a month and year control (YYYY-MM).</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">month</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">22</span>
+        <p class="question-text"><code>&lt;input type="..."&gt;</code> defines a range control (slider).</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">range</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">23</span>
+        <p class="question-text"><code>&lt;input type="..."&gt;</code> defines a date picker that includes year, month, day, and time.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">datetime-local</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">24</span>
+        <p class="question-text"><code>&lt;input type="..."&gt;</code> defines a control for entering a time.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">time</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">25</span>
+        <p class="question-text"><code>&lt;input type="..."&gt;</code> defines a week and year control.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">week</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">26</span>
+        <p class="question-text"><code>&lt;input type="..."&gt;</code> defines a text field for entering a search string.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">search</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">27</span>
+        <p class="question-text"><code>&lt;input type="..."&gt;</code> defines a select field and a "Browse" button for file uploads.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">file</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">28</span>
+        <p class="question-text"><code>&lt;input type="..."&gt;</code> is used to define input fields for telephone numbers.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">tel</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">29</span>
+        <p class="question-text">The ______ attribute of the &lt;input&gt; tag specifies that an input field should be disabled.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">disabled</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">30</span>
+        <p class="question-text">The ______ attribute of the &lt;input&gt; tag specifies the maximum value.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">max</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">31</span>
+        <p class="question-text">The ______ attribute of the &lt;input&gt; tag specifies the minimum value.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">min</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">32</span>
+        <p class="question-text">The ______ attribute of the &lt;input&gt; tag specifies a regular expression (regex) to check input.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">pattern</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">33</span>
+        <p class="question-text">The ______ attribute of the &lt;input&gt; tag specifies that a field is read-only.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">readonly</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">34</span>
+        <p class="question-text">The ______ attribute acts as a temporary label showing the purpose of a field without a &lt;label&gt; tag.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">placeholder</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">35</span>
+        <p class="question-text">The ______ attribute of the &lt;input&gt; tag specifies that a field must be filled out.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">required</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">36</span>
+        <p class="question-text">The ______ attribute specifies whether a form should have auto-completion on or off.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">autocomplete</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">37</span>
+        <p class="question-text">The ______ attribute specifies that a field should automatically get focus when the page loads.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">autofocus</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">38</span>
+        <p class="question-text">The ______ and ______ attributes specify the size of an &lt;input type="image"&gt;.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">height and width</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">39</span>
+        <p class="question-text">The ______ attribute allows the user to enter more than one value (e.g., in file or email).</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">multiple</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">40</span>
+        <p class="question-text">The ______ attribute is used to identify an HTML element uniquely.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">id</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">41</span>
+        <p class="question-text">The ______ attribute is used to apply CSS styles to a group of elements.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">class</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">42</span>
+        <p class="question-text">The ______ tag is used by search engines to search information provided with the web page.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text"><code>&lt;meta&gt;</code></p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">43</span>
+        <p class="question-text">Metadata provided by the &lt;meta&gt; tag will not be ______ on the web page.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">displayed</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">44</span>
+        <p class="question-text">The ______ attribute of the &lt;meta&gt; tag specifies the character encoding used (e.g., UTF-8).</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">charset</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">45</span>
+        <p class="question-text">The ______ attribute of the &lt;meta&gt; tag is used for HTTP response message headers.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">http-equiv</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">46</span>
+        <p class="question-text"><code>&lt;meta http-equiv="refresh" content="5"&gt;</code> specifies the page will refresh every ______ seconds.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">five</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">47</span>
+        <p class="question-text">______ can control the layout of multiple web pages all at once.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">CSS</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">48</span>
+        <p class="question-text">A CSS rule set contains a ______ and a declaration block.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">selector</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">49</span>
+        <p class="question-text">Each declaration in CSS contains a property name and a value, separated by a ______.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">colon</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">50</span>
+        <p class="question-text">There are ______ methods of implementing styling information in HTML.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">three</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">51</span>
+        <p class="question-text">______ style sheet uses the style attribute inside the HTML start tag.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">Inline</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">52</span>
+        <p class="question-text">The ______ style sheet is used to apply CSS to a single document using the &lt;style&gt; tag.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">Internal</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">53</span>
+        <p class="question-text">The ______ style sheet facilitates changing the look of an entire website by changing one file.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">External</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">54</span>
+        <p class="question-text">The external style sheet must be saved with the ______ extension.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text"><code>.css</code></p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">55</span>
+        <p class="question-text">In CSS, the ______ property changes the color of the text.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">color</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">56</span>
+        <p class="question-text">The ______ property is used to make the text bold.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">font-weight</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">57</span>
+        <p class="question-text">The ______ property is used to make the text italic.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">font-style</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">58</span>
+        <p class="question-text">The ______ property is used to add underline or strike-through.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">text-decoration</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">59</span>
+        <p class="question-text">The ______ property is used to control the horizontal alignment of text.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">text-align</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">60</span>
+        <p class="question-text">The ______ property is used to control the font type.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">font-family</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">61</span>
+        <p class="question-text">The ______ property allows you to control the size of the font.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">font-size</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">62</span>
+        <p class="question-text">The ______ property adds space around the contents inside an element.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">padding</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">63</span>
+        <p class="question-text">The ______ property adds space outside the border of an element.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">margin</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">64</span>
+        <p class="question-text">The ID selector is written with the ______ character followed by the ID name.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text"># (Hash)</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">65</span>
+        <p class="question-text">The Class selector is written with a ______ character followed by the class name.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">. (Period)</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">66</span>
+        <p class="question-text">The ______ selector is used as a wildcard to select all elements.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">Universal (*)</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">67</span>
+        <p class="question-text">In a grouping selector, ______ are used to separate each selector.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">commas</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">68</span>
+        <p class="question-text">The ______ positioning is the default position for an HTML element.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">static</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">69</span>
+        <p class="question-text">The ______ positioning helps keep an element fixed even when the page is scrolled.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">fixed</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">70</span>
+        <p class="question-text">The ______ positioning property sets an element relative to its normal position.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">relative</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">71</span>
+        <p class="question-text">The ______ positioning property sets an element in a specific location relative to its parent.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">absolute</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">72</span>
+        <p class="question-text">The ______ property defines how components are placed (block, inline, etc.) on a page.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">display</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">73</span>
+        <p class="question-text">The ______ attribute of the &lt;ol&gt; tag specifies the starting number.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">start</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">74</span>
+        <p class="question-text">An unordered list is also called a ______ list.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">bulleted</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">75</span>
+        <p class="question-text">Each list item in a &lt;ul&gt; or &lt;ol&gt; starts with the ______ tag.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text"><code>&lt;li&gt;</code></p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">76</span>
+        <p class="question-text">To define a definition list, the ______ tag is used.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text"><code>&lt;dl&gt;</code></p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">77</span>
+        <p class="question-text">The ______ tag defines the term, while ______ defines the description in a &lt;dl&gt;.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text"><code>&lt;dt&gt;</code> and <code>&lt;dd&gt;</code></p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">78</span>
+        <p class="question-text">The list within another list is called a ______ list.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">nested</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">79</span>
+        <p class="question-text">The ______ element enables embedding audio files into a webpage.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text"><code>&lt;audio&gt;</code></p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">80</span>
+        <p class="question-text">The ______ attribute of the &lt;audio&gt; tag specifies that the audio should play repeatedly.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">loop</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">81</span>
+        <p class="question-text">The ______ tag is used to specify multiple media resources for audio or video.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text"><code>&lt;source&gt;</code></p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">82</span>
+        <p class="question-text">The ______ attribute of the &lt;video&gt; tag specifies an image to be shown while the video is downloading.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">poster</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">83</span>
+        <p class="question-text">An image with multiple hyperlinks is called an ______.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">Image Map</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">84</span>
+        <p class="question-text">The clickable regions of an image map are called ______.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">hotspots</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">85</span>
+        <p class="question-text">To create a client-side image map, the ______ attribute of the &lt;img&gt; tag is used.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">usemap</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">86</span>
+        <p class="question-text">The ______ attribute of the &lt;area&gt; tag defines the coordinates of the clickable region.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">coords</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">87</span>
+        <p class="question-text">The ______ attribute of the &lt;area&gt; tag defines the shape (rect, circle, poly).</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">shape</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">88</span>
+        <p class="question-text">The company that provides storage space for a website is called a ______.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">Web Host</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">89</span>
+        <p class="question-text">______ hosting is a paid service where the entire server is reserved for one user.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">Dedicated</p></div>
+      </div>
+    </article>
+
+    <article class="question-card">
+      <div class="question-line">
+        <span class="number-badge">90</span>
+        <p class="question-text">______ hosting allows multiple websites to share the same server resources.</p>
+      </div>
+      <div class="answer-panel">
+        <span class="check">✓</span>
+        <div><span class="answer-label">ANSWER</span><p class="answer-text">Shared</p></div>
+      </div>
+    </article>
+
+  </section>
+</main>
+
+<footer>
+  <div class="footer-rule"></div>
+  <strong>© 2026–27 STUDY-HUB</strong>
+  <br>
+  HSC Information Technology · Chapter 1 — Advanced Web Designing
+</footer>
+
+<script>
+(() => {
+  "use strict";
+
+  const body = document.body;
+  const toggle = document.getElementById("toggleAnswers");
+  const exportButton = document.getElementById("exportBtn");
+  const questionCount = document.querySelectorAll(".question-card").length;
+
+  document.getElementById("questionCount").textContent =
+    questionCount + " QUESTIONS";
+
+  function setAnswersVisible(visible) {
+    body.classList.toggle("answers-hidden", !visible);
+
+    toggle.textContent = visible
+      ? "Hide All Answers"
+      : "Show All Answers";
+
+    toggle.setAttribute("aria-pressed", String(visible));
+
+    toggle.setAttribute(
+      "aria-label",
+      visible ? "Hide all answers" : "Show all answers"
+    );
+  }
+
+  toggle.addEventListener("click", () => {
+    const currentlyHidden = body.classList.contains("answers-hidden");
+    setAnswersVisible(currentlyHidden);
+  });
+
+  exportButton.addEventListener("click", () => {
+    // Include all answers in the printed PDF.
+    setAnswersVisible(true);
+    window.print();
+  });
+
+  // Ensure answers are visible when printing through the browser menu.
+  window.addEventListener("beforeprint", () => {
+    setAnswersVisible(true);
+  });
+
+  window.addEventListener("afterprint", () => {
+    setAnswersVisible(true);
+  });
+})();
+</script>
+
+</body>
+</html>
