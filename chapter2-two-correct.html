@@ -1,0 +1,852 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#102d68">
+<title>Chapter 2 — Two Correct Answers | STUDY-HUB</title>
+
+<style>
+:root {
+  --navy: #081b43;
+  --blue: #1746a2;
+  --royal: #2864e8;
+  --ink: #183153;
+  --muted: #61718a;
+  --border: #d6e5fb;
+  --green: #138357;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  color: var(--ink);
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(180deg, #edf5ff, #f8fbff 420px, #f2f6fc);
+  line-height: 1.55;
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  color: white;
+  padding: 26px max(20px, calc((100% - 1200px) / 2)) 55px;
+  background:
+    radial-gradient(circle at 85% 15%, #68c9ff35, transparent 28%),
+    radial-gradient(circle at 10% 100%, #276cf966, transparent 36%),
+    linear-gradient(130deg, #071633, #103574 60%, #2059bf);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 330px;
+  height: 330px;
+  right: -110px;
+  top: -190px;
+  border: 1px solid #ffffff35;
+  border-radius: 50%;
+  box-shadow: 0 0 0 35px #ffffff08, 0 0 0 75px #ffffff07;
+  pointer-events: none;
+}
+
+.topbar {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: 3px;
+}
+
+.brand-logo {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  color: #153c82;
+  background: linear-gradient(145deg, white, #bce7ff);
+  border-radius: 13px;
+  box-shadow: 0 5px 18px #0003;
+  letter-spacing: -1px;
+}
+
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.back-home-btn, .export-btn, .toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 12px 17px;
+  border-radius: 13px;
+  font-size: .9rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s, filter .2s;
+}
+
+.back-home-btn {
+  color: white;
+  background: #ffffff12;
+  border: 1px solid #ffffff50;
+  text-decoration: none;
+}
+
+.back-home-btn:hover {
+  background: #ffffff28;
+  transform: translateY(-2px);
+}
+
+.export-btn {
+  color: white;
+  background: linear-gradient(135deg, #438aff, #2054d9);
+  border: 1px solid #ffffff50;
+  box-shadow: 0 7px 22px #001b5866;
+}
+
+.export-btn:hover, .toggle-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.06);
+}
+
+.hero-content {
+  max-width: 1200px;
+  margin: 48px auto 0;
+  position: relative;
+  z-index: 1;
+}
+
+.eyebrow {
+  color: #c6e9ff;
+  font-size: .8rem;
+  font-weight: 850;
+  letter-spacing: 3px;
+}
+
+.chapter-tag {
+  display: inline-block;
+  margin-top: 24px;
+  padding: 7px 13px;
+  color: #d9efff;
+  background: #ffffff12;
+  border: 1px solid #ffffff45;
+  border-radius: 30px;
+  font-size: .8rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+h1 {
+  margin: 15px 0 8px;
+  font-size: clamp(2.3rem, 6vw, 4.7rem);
+  font-weight: 950;
+  line-height: 1.02;
+  letter-spacing: -2px;
+}
+
+.hero-subtitle {
+  margin: 0;
+  color: #dceeff;
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.hero-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.hero-pills span {
+  padding: 8px 12px;
+  color: #e8f5ff;
+  background: #ffffff12;
+  border: 1px solid #ffffff28;
+  border-radius: 10px;
+  font-size: .83rem;
+}
+
+main {
+  position: relative;
+  max-width: 1240px;
+  margin: -22px auto 0;
+  padding: 0 22px 40px;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding: 17px 20px;
+  background: #ffffffed;
+  border: 1px solid white;
+  border-radius: 18px;
+  box-shadow: 0 10px 28px #17438712;
+}
+
+.counter-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.counter-icon {
+  display: grid;
+  place-items: center;
+  width: 43px;
+  height: 43px;
+  border-radius: 13px;
+  background: #e8f1ff;
+  color: #2055c9;
+  font-size: 1.3rem;
+}
+
+.counter {
+  color: #15376e;
+  font-weight: 900;
+}
+
+.counter small {
+  display: block;
+  color: var(--muted);
+  font-size: .78rem;
+  font-weight: 600;
+}
+
+.toggle-btn {
+  color: #1949a5;
+  background: #edf4ff;
+  border: 1px solid #cbdfff;
+}
+
+.tip {
+  display: flex;
+  gap: 12px;
+  margin: 22px 0;
+  padding: 15px 17px;
+  color: #345575;
+  background: linear-gradient(100deg, #e4f4ff, #f3faff);
+  border: 1px solid #cce8ff;
+  border-radius: 15px;
+}
+
+.tip-icon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 30px;
+  height: 30px;
+  color: #1766c3;
+  background: white;
+  border-radius: 9px;
+  font-weight: 900;
+}
+
+.tip strong { color: #123c79; }
+
+.section-heading {
+  margin: 0 0 16px;
+}
+
+.section-heading h2 {
+  margin: 0;
+  color: #102b5f;
+  font-size: 1.35rem;
+}
+
+.section-heading p {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: .9rem;
+}
+
+.question-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 15px;
+}
+
+.question-card {
+  min-width: 0;
+  padding: 17px;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 17px;
+  box-shadow: 0 4px 15px #1d488c0b;
+  transition: transform .2s, box-shadow .2s, border-color .2s;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.question-card:hover {
+  transform: translateY(-3px);
+  border-color: #a8c9ff;
+  box-shadow: 0 12px 25px #1d488c1c;
+}
+
+.question-line {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.number-badge {
+  display: grid;
+  place-items: center;
+  flex: 0 0 38px;
+  height: 38px;
+  color: white;
+  background: linear-gradient(145deg, #4b8bff, #1f50c5);
+  border-radius: 12px;
+  font-size: .84rem;
+  font-weight: 900;
+  box-shadow: 0 5px 12px #2563eb2b;
+}
+
+.question-text {
+  margin: 5px 0 15px;
+  color: #18345f;
+  font-size: .94rem;
+  font-weight: 700;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
+.question-text code {
+  padding: 2px 5px;
+  color: #1746a2;
+  background: #edf4ff;
+  border-radius: 4px;
+  font-size: .9em;
+}
+
+.options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0 0 14px 50px;
+}
+
+.option {
+  padding: 8px 10px;
+  color: #345575;
+  background: #f3f7ff;
+  border: 1px solid #e0eaff;
+  border-radius: 9px;
+  font-size: .88rem;
+  overflow-wrap: anywhere;
+}
+
+.answer-panel {
+  padding: 12px;
+  background: linear-gradient(135deg, #e8fbf2, #f3fff9);
+  border: 1px solid #c4f0dc;
+  border-radius: 12px;
+}
+
+.answer-label {
+  display: block;
+  margin-bottom: 5px;
+  color: #138357;
+  font-size: .65rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.answer-text {
+  margin: 0;
+  color: #155d43;
+  font-size: .92rem;
+  font-weight: 900;
+  line-height: 1.5;
+}
+
+.answer-text span {
+  display: inline-block;
+  margin: 2px 4px 2px 0;
+  padding: 5px 9px;
+  background: #d3f5e4;
+  border: 1px solid #b9e9d0;
+  border-radius: 7px;
+}
+
+.answers-hidden .answer-panel { display: none; }
+
+footer {
+  padding: 24px 18px 30px;
+  color: #6d7e99;
+  text-align: center;
+  font-size: .83rem;
+}
+
+footer strong {
+  color: #234a87;
+  letter-spacing: 2px;
+}
+
+.footer-rule {
+  width: 60px;
+  height: 3px;
+  margin: 0 auto 12px;
+  background: linear-gradient(90deg, #67b9ff, #2459d8);
+  border-radius: 9px;
+}
+
+@media (max-width: 700px) {
+  .hero { padding: 20px 16px 43px; }
+  .topbar { align-items: flex-start; }
+
+  .brand {
+    gap: 8px;
+    font-size: .82rem;
+    letter-spacing: 2px;
+  }
+
+  .brand-logo {
+    width: 37px;
+    height: 37px;
+  }
+
+  .topbar-actions { gap: 7px; }
+
+  .back-home-btn, .export-btn {
+    gap: 5px;
+    padding: 10px;
+    font-size: .76rem;
+  }
+
+  .hero-content { margin-top: 38px; }
+  main { padding: 0 13px 30px; }
+  .toolbar { padding: 14px; }
+
+  .question-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .question-card { padding: 15px; }
+}
+
+@media (max-width: 420px) {
+  .topbar {
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .topbar-actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .options { margin-left: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; }
+}
+
+@page {
+  size: A4;
+  margin: 11mm 10mm 13mm;
+}
+
+@media print {
+  html, body {
+    color: #142849 !important;
+    background: white !important;
+    font-size: 9pt;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .hero {
+    padding: 8mm;
+    background: linear-gradient(130deg, #071735, #103574 60%, #1d55bd) !important;
+  }
+
+  .hero::before { display: none; }
+  .back-home-btn, .export-btn, .toggle-btn { display: none !important; }
+  .hero-content { margin: 6mm 0 0; }
+
+  .chapter-tag { margin-top: 3mm; }
+
+  h1 {
+    margin: 3mm 0 1.5mm;
+    font-size: 28pt;
+  }
+
+  .hero-subtitle { font-size: 11pt; }
+  .hero-pills { margin-top: 3mm; }
+
+  main {
+    max-width: none;
+    margin: 4mm 0 0;
+    padding: 0;
+  }
+
+  .toolbar {
+    padding: 3mm;
+    border: 1px solid #cbdcf2;
+    box-shadow: none;
+  }
+
+  .counter-icon { display: none; }
+
+  .tip {
+    margin: 3mm 0;
+    padding: 3mm;
+    background: #edf7ff !important;
+  }
+
+  .tip-icon { display: none; }
+  .section-heading { margin-bottom: 2mm; }
+
+  .question-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2.5mm;
+  }
+
+  .question-card {
+    padding: 2.5mm;
+    border: .6pt solid #cbdcf2;
+    border-radius: 2mm;
+    box-shadow: none;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .question-card:hover { transform: none; }
+
+  .number-badge {
+    flex-basis: 7mm;
+    height: 7mm;
+    border-radius: 2mm;
+    font-size: 7.5pt;
+    box-shadow: none;
+  }
+
+  .question-text {
+    margin: 1mm 0 2mm;
+    font-size: 8pt;
+    line-height: 1.32;
+  }
+
+  .options {
+    gap: 1.5mm;
+    margin: 0 0 2mm 9mm;
+  }
+
+  .option {
+    padding: 1.5mm;
+    font-size: 7.5pt;
+  }
+
+  .answer-panel {
+    display: block !important;
+    padding: 1.5mm 2mm;
+    border-radius: 2mm;
+    break-inside: avoid;
+  }
+
+  .answer-label {
+    margin-bottom: 0;
+    font-size: 5.5pt;
+  }
+
+  .answer-text { font-size: 8pt; }
+
+  footer {
+    padding-top: 4mm;
+    font-size: 7pt;
+  }
+
+  .footer-rule { margin-bottom: 2mm; }
+
+  .answers-hidden .answer-panel { display: block !important; }
+}
+</style>
+</head>
+
+<body>
+
+<header class="hero">
+  <div class="topbar">
+    <div class="brand">
+      <span class="brand-logo" aria-hidden="true">S·H</span>
+      <span>STUDY-HUB</span>
+    </div>
+
+    <div class="topbar-actions">
+      <a href="index.html" class="back-home-btn">
+        <span aria-hidden="true">←</span> Back to Home
+      </a>
+
+      <button class="export-btn" id="exportBtn" type="button">
+        <svg width="19" height="19" viewBox="0 0 24 24"
+             fill="none" aria-hidden="true">
+          <path d="M12 3v11m0 0 4-4m-4 4-4-4M5 16v4h14v-4"
+                stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        EXPORT PDF
+      </button>
+    </div>
+  </div>
+
+  <div class="hero-content">
+    <div class="eyebrow">HSC INFORMATION TECHNOLOGY</div>
+    <div class="chapter-tag">CHAPTER – 2</div>
+    <h1>INTRODUCTION<br>TO SEO</h1>
+    <p class="hero-subtitle">TWO CORRECT ANSWERS</p>
+
+    <div class="hero-pills">
+      <span>✦ Revision-ready notes</span>
+      <span>SEO · SEM · SMO</span>
+      <span>7 Questions</span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="toolbar" aria-label="Revision controls">
+    <div class="counter-wrap">
+      <span class="counter-icon" aria-hidden="true">✓</span>
+      <div class="counter">
+        <span id="questionCount">7 QUESTIONS</span>
+        <small>Chapter 2 · Introduction to SEO</small>
+      </div>
+    </div>
+
+    <button class="toggle-btn" id="toggleAnswers"
+            type="button" aria-pressed="true">
+      Hide All Answers
+    </button>
+  </section>
+
+  <aside class="tip">
+    <span class="tip-icon" aria-hidden="true">✦</span>
+    <div>
+      <strong>Revision tip</strong><br>
+      Each question has two correct answers. Hide the answers and try
+      selecting both correct options before revealing the solutions.
+    </div>
+  </aside>
+
+  <div class="section-heading">
+    <h2>Multiple Choice Questions</h2>
+    <p>Select the two correct answers for each question.</p>
+  </div>
+
+  <section class="question-grid" id="questionGrid"></section>
+</main>
+
+<footer>
+  <div class="footer-rule"></div>
+  <strong>© 2026–27 STUDY-HUB</strong>
+  <br>
+  HSC Information Technology · Chapter 2 — Introduction to SEO
+</footer>
+
+<script>
+"use strict";
+
+const questions = [
+  {
+    question: "SEO is a technique used for _______ and _______ a website to be ranked high in a search engine.",
+    options: [
+      "(a) Designing",
+      "(b) Developing",
+      "(c) Monitoring",
+      "(d) Analyzing"
+    ],
+    answers: ["(a) Designing", "(b) Developing"]
+  },
+  {
+    question: "The two main types of SEO are _______ and _______.",
+    options: [
+      "(a) On-Page SEO",
+      "(b) White Hat SEO",
+      "(c) Off-Page SEO",
+      "(d) Black Hat SEO"
+    ],
+    answers: ["(a) On-Page SEO", "(c) Off-Page SEO"]
+  },
+  {
+    question: "The two main categories/techniques of SEO strategies are _______ and _______.",
+    options: [
+      "(a) On-Page SEO",
+      "(b) White Hat SEO",
+      "(c) Off-Page SEO",
+      "(d) Black Hat SEO"
+    ],
+    answers: ["(b) White Hat SEO", "(d) Black Hat SEO"]
+  },
+  {
+    question: "The page content optimization can be done by using keywords in _______ and _______ tags.",
+    options: [
+      "(a) <font>",
+      "(b) <title>",
+      "(c) <hr>",
+      "(d) <meta>"
+    ],
+    answers: ["(b) <title>", "(d) <meta>"]
+  },
+  {
+    question: "Other technical factors to rank a website higher are _______ and _______.",
+    options: [
+      "(a) Desktop friendly design",
+      "(b) Speed of the website",
+      "(c) Creating robots.txt",
+      "(d) No backlinks"
+    ],
+    answers: ["(b) Speed of the website", "(c) Creating robots.txt"]
+  },
+  {
+    question: "Social Media Optimization deals with enhancing the website ranking using _______ and _______.",
+    options: [
+      "(a) Blogs",
+      "(b) E-commerce websites",
+      "(c) Facebook",
+      "(d) Banking applications"
+    ],
+    answers: ["(a) Blogs", "(c) Facebook"]
+  },
+  {
+    question: "Commonly used SEO Audit Tools include _______ and _______.",
+    options: [
+      "(a) SEOptimer",
+      "(b) SEOptimizer",
+      "(c) Seomator",
+      "(d) SEO Auditor"
+    ],
+    answers: ["(a) SEOptimer", "(c) Seomator"]
+  }
+];
+
+const questionGrid = document.getElementById("questionGrid");
+const toggleButton = document.getElementById("toggleAnswers");
+const exportButton = document.getElementById("exportBtn");
+
+document.getElementById("questionCount").textContent =
+  questions.length + " QUESTIONS";
+
+function makeTextElement(tag, className, text) {
+  const element = document.createElement(tag);
+  element.className = className;
+  element.textContent = text;
+  return element;
+}
+
+questions.forEach((item, index) => {
+  const card = document.createElement("article");
+  card.className = "question-card";
+
+  const questionLine = document.createElement("div");
+  questionLine.className = "question-line";
+
+  const numberBadge = makeTextElement(
+    "span",
+    "number-badge",
+    String(index + 1).padStart(2, "0")
+  );
+
+  const questionText = makeTextElement(
+    "p",
+    "question-text",
+    item.question
+  );
+
+  questionLine.append(numberBadge, questionText);
+
+  const options = document.createElement("div");
+  options.className = "options";
+
+  item.options.forEach(option => {
+    options.appendChild(
+      makeTextElement("div", "option", option)
+    );
+  });
+
+  const answerPanel = document.createElement("div");
+  answerPanel.className = "answer-panel";
+
+  const answerLabel = makeTextElement(
+    "span",
+    "answer-label",
+    "TWO CORRECT ANSWERS"
+  );
+
+  const answerText = document.createElement("p");
+  answerText.className = "answer-text";
+
+  item.answers.forEach(answer => {
+    const answerTag = document.createElement("span");
+    answerTag.textContent = answer;
+    answerText.appendChild(answerTag);
+  });
+
+  answerPanel.append(answerLabel, answerText);
+  card.append(questionLine, options, answerPanel);
+  questionGrid.appendChild(card);
+});
+
+function setAnswersVisible(visible) {
+  document.body.classList.toggle("answers-hidden", !visible);
+
+  toggleButton.textContent = visible
+    ? "Hide All Answers"
+    : "Show All Answers";
+
+  toggleButton.setAttribute("aria-pressed", String(visible));
+}
+
+toggleButton.addEventListener("click", () => {
+  const currentlyHidden =
+    document.body.classList.contains("answers-hidden");
+
+  setAnswersVisible(currentlyHidden);
+});
+
+exportButton.addEventListener("click", () => {
+  setAnswersVisible(true);
+  window.print();
+});
+
+window.addEventListener("beforeprint", () => {
+  setAnswersVisible(true);
+});
+
+window.addEventListener("afterprint", () => {
+  setAnswersVisible(true);
+});
+</script>
+
+</body>
+</html>
