@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#102d68">
+<title>Chapter 1 — Fill in the Blanks | STUDY-HUB</title>
+
+<style>
+:root {
+  --navy: #081b43;
+  --blue: #1746a2;
+  --royal: #2864e8;
+  --ink: #183153;
+  --muted: #61718a;
+  --border: #d6e5fb;
+  --green: #138357;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  color: var(--ink);
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(180deg, #edf5ff, #f8fbff 420px, #f2f6fc);
+  line-height: 1.55;
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  color: white;
+  padding: 26px max(20px, calc((100% - 1200px) / 2)) 55px;
+  background:
+    radial-gradient(circle at 85% 15%, #68c9ff35, transparent 28%),
+    radial-gradient(circle at 10% 100%, #276cf966, transparent 36%),
+    linear-gradient(130deg, #071633, #103574 60%, #2059bf);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 330px;
+  height: 330px;
+  right: -110px;
+  top: -190px;
+  border: 1px solid #ffffff35;
+  border-radius: 50%;
+  box-shadow: 0 0 0 35px #ffffff08, 0 0 0 75px #ffffff07;
+  pointer-events: none;
+}
+
+.topbar {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: 3px;
+}
+
+.brand-logo {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  color: #153c82;
+  background: linear-gradient(145deg, white, #bce7ff);
+  border-radius: 13px;
+  box-shadow: 0 5px 18px #0003;
+  letter-spacing: -1px;
+}
+
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.back-home-btn, .export-btn, .toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 12px 17px;
+  border-radius: 13px;
+  font-size: .9rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s, filter .2s;
+}
+
+.back-home-btn {
+  color: white;
+  background: #ffffff12;
+  border: 1px solid #ffffff50;
+  text-decoration: none;
+}
+
+.back-home-btn:hover {
+  background: #ffffff28;
+  transform: translateY(-2px);
+}
+
+.export-btn {
+  color: white;
+  background: linear-gradient(135deg, #438aff, #2054d9);
+  border: 1px solid #ffffff50;
+  box-shadow: 0 7px 22px #001b5866;
+}
+
+.export-btn:hover, .toggle-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.06);
+}
+
+.hero-content {
+  max-width: 1200px;
+  margin: 48px auto 0;
+  position: relative;
+  z-index: 1;
+}
+
+.eyebrow {
+  color: #c6e9ff;
+  font-size: .8rem;
+  font-weight: 850;
+  letter-spacing: 3px;
+}
+
+.chapter-tag {
+  display: inline-block;
+  margin-top: 24px;
+  padding: 7px 13px;
+  color: #d9efff;
+  background: #ffffff12;
+  border: 1px solid #ffffff45;
+  border-radius: 30px;
+  font-size: .8rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+h1 {
+  margin: 15px 0 8px;
+  font-size: clamp(2.3rem, 6vw, 4.7rem);
+  font-weight: 950;
+  line-height: 1.02;
+  letter-spacing: -2px;
+}
+
+.hero-subtitle {
+  margin: 0;
+  color: #dceeff;
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.hero-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.hero-pills span {
+  padding: 8px 12px;
+  color: #e8f5ff;
+  background: #ffffff12;
+  border: 1px solid #ffffff28;
+  border-radius: 10px;
+  font-size: .83rem;
+}
+
+main {
+  position: relative;
+  max-width: 1240px;
+  margin: -22px auto 0;
+  padding: 0 22px 40px;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding: 17px 20px;
+  background: #ffffffed;
+  border: 1px solid white;
+  border-radius: 18px;
+  box-shadow: 0 10px 28px #17438712;
+}
+
+.counter-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.counter-icon {
+  display: grid;
+  place-items: center;
+  width: 43px;
+  height: 43px;
+  border-radius: 13px;
+  background: #e8f1ff;
+  color: #2055c9;
+  font-size: 1.3rem;
+}
+
+.counter {
+  color: #15376e;
+  font-weight: 900;
+}
+
+.counter small {
+  display: block;
+  color: var(--muted);
+  font-size: .78rem;
+  font-weight: 600;
+}
+
+.toggle-btn {
+  color: #1949a5;
+  background: #edf4ff;
+  border: 1px solid #cbdfff;
+}
+
+.tip {
+  display: flex;
+  gap: 12px;
+  margin: 22px 0;
+  padding: 15px 17px;
+  color: #345575;
+  background: linear-gradient(100deg, #e4f4ff, #f3faff);
+  border: 1px solid #cce8ff;
+  border-radius: 15px;
+}
+
+.tip-icon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 30px;
+  height: 30px;
+  color: #1766c3;
+  background: white;
+  border-radius: 9px;
+  font-weight: 900;
+}
+
+.tip strong { color: #123c79; }
+
+.section-heading {
+  margin: 0 0 16px;
+}
+
+.section-heading h2 {
+  margin: 0;
+  color: #102b5f;
+  font-size: 1.35rem;
+}
+
+.section-heading p {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: .9rem;
+}
+
+.question-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 15px;
+}
+
+.question-card {
+  min-width: 0;
+  padding: 17px;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 17px;
+  box-shadow: 0 4px 15px #1d488c0b;
+  transition: transform .2s, box-shadow .2s, border-color .2s;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.question-card:hover {
+  transform: translateY(-3px);
+  border-color: #a8c9ff;
+  box-shadow: 0 12px 25px #1d488c1c;
+}
+
+.question-line {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.number-badge {
+  display: grid;
+  place-items: center;
+  flex: 0 0 38px;
+  height: 38px;
+  color: white;
+  background: linear-gradient(145deg, #4b8bff, #1f50c5);
+  border-radius: 12px;
+  font-size: .84rem;
+  font-weight: 900;
+  box-shadow: 0 5px 12px #2563eb2b;
+}
+
+.question-text {
+  margin: 5px 0 15px;
+  color: #18345f;
+  font-size: .94rem;
+  font-weight: 700;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
+.answer-panel {
+  padding: 12px;
+  background: linear-gradient(135deg, #e8fbf2, #f3fff9);
+  border: 1px solid #c4f0dc;
+  border-radius: 12px;
+}
+
+.answer-label {
+  display: block;
+  margin-bottom: 5px;
+  color: #138357;
+  font-size: .65rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.answer-text {
+  margin: 0;
+  color: #155d43;
+  font-size: .92rem;
+  font-weight: 900;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.answers-hidden .answer-panel { display: none; }
+
+footer {
+  padding: 24px 18px 30px;
+  color: #6d7e99;
+  text-align: center;
+  font-size: .83rem;
+}
+
+footer strong {
+  color: #234a87;
+  letter-spacing: 2px;
+}
+
+.footer-rule {
+  width: 60px;
+  height: 3px;
+  margin: 0 auto 12px;
+  background: linear-gradient(90deg, #67b9ff, #2459d8);
+  border-radius: 9px;
+}
+
+@media (max-width: 700px) {
+  .hero { padding: 20px 16px 43px; }
+  .topbar { align-items: flex-start; }
+
+  .brand {
+    gap: 8px;
+    font-size: .82rem;
+    letter-spacing: 2px;
+  }
+
+  .brand-logo {
+    width: 37px;
+    height: 37px;
+  }
+
+  .topbar-actions { gap: 7px; }
+
+  .back-home-btn, .export-btn {
+    gap: 5px;
+    padding: 10px;
+    font-size: .76rem;
+  }
+
+  .hero-content { margin-top: 38px; }
+  main { padding: 0 13px 30px; }
+  .toolbar { padding: 14px; }
+
+  .question-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .question-card { padding: 15px; }
+}
+
+@media (max-width: 420px) {
+  .topbar {
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .topbar-actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; }
+}
+
+@page {
+  size: A4;
+  margin: 11mm 10mm 13mm;
+}
+
+@media print {
+  html, body {
+    color: #142849 !important;
+    background: white !important;
+    font-size: 9pt;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .hero {
+    padding: 8mm;
+    background: linear-gradient(130deg, #071735, #103574 60%, #1d55bd) !important;
+  }
+
+  .hero::before { display: none; }
+  .back-home-btn, .export-btn, .toggle-btn { display: none !important; }
+  .hero-content { margin: 6mm 0 0; }
+
+  .chapter-tag { margin-top: 3mm; }
+
+  h1 {
+    margin: 3mm 0 1.5mm;
+    font-size: 28pt;
+  }
+
+  .hero-subtitle { font-size: 11pt; }
+  .hero-pills { margin-top: 3mm; }
+
+  main {
+    max-width: none;
+    margin: 4mm 0 0;
+    padding: 0;
+  }
+
+  .toolbar {
+    padding: 3mm;
+    border: 1px solid #cbdcf2;
+    box-shadow: none;
+  }
+
+  .counter-icon { display: none; }
+
+  .tip {
+    margin: 3mm 0;
+    padding: 3mm;
+    background: #edf7ff !important;
+  }
+
+  .tip-icon { display: none; }
+  .section-heading { margin-bottom: 2mm; }
+
+  .question-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2.5mm;
+  }
+
+  .question-card {
+    padding: 2.5mm;
+    border: .6pt solid #cbdcf2;
+    border-radius: 2mm;
+    box-shadow: none;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .question-card:hover { transform: none; }
+
+  .number-badge {
+    flex-basis: 7mm;
+    height: 7mm;
+    border-radius: 2mm;
+    font-size: 7.5pt;
+    box-shadow: none;
+  }
+
+  .question-text {
+    margin: 1mm 0 2mm;
+    font-size: 8pt;
+    line-height: 1.32;
+  }
+
+  .answer-panel {
+    display: block !important;
+    padding: 1.5mm 2mm;
+    border-radius: 2mm;
+    break-inside: avoid;
+  }
+
+  .answer-label {
+    margin-bottom: 0;
+    font-size: 5.5pt;
+  }
+
+  .answer-text { font-size: 8pt; }
+
+  footer {
+    padding-top: 4mm;
+    font-size: 7pt;
+  }
+
+  .footer-rule { margin-bottom: 2mm; }
+
+  .answers-hidden .answer-panel { display: block !important; }
+}
+</style>
+</head>
+
+<body>
+
+<header class="hero">
+  <div class="topbar">
+    <div class="brand">
+      <span class="brand-logo" aria-hidden="true">S·H</span>
+      <span>STUDY-HUB</span>
+    </div>
+
+    <div class="topbar-actions">
+      <a href="index.html" class="back-home-btn">
+        <span aria-hidden="true">←</span> Back to Home
+      </a>
+
+      <button class="export-btn" id="exportBtn" type="button">
+        <svg width="19" height="19" viewBox="0 0 24 24"
+             fill="none" aria-hidden="true">
+          <path d="M12 3v11m0 0 4-4m-4 4-4-4M5 16v4h14v-4"
+                stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        EXPORT PDF
+      </button>
+    </div>
+  </div>
+
+  <div class="hero-content">
+    <div class="eyebrow">HSC INFORMATION TECHNOLOGY</div>
+    <div class="chapter-tag">CHAPTER – 1</div>
+    <h1>ADVANCED WEB<br>DESIGNING</h1>
+    <p class="hero-subtitle">FILL IN THE BLANKS</p>
+
+    <div class="hero-pills">
+      <span>✦ Revision-ready notes</span>
+      <span>HTML · CSS · Web Design</span>
+      <span>90 Questions</span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="toolbar" aria-label="Revision controls">
+    <div class="counter-wrap">
+      <span class="counter-icon" aria-hidden="true">▤</span>
+      <div class="counter">
+        <span id="questionCount">90 QUESTIONS</span>
+        <small>Chapter 1 · Advanced Web Designing</small>
+      </div>
+    </div>
+
+    <button class="toggle-btn" id="toggleAnswers"
+            type="button" aria-pressed="true">
+      Hide All Answers
+    </button>
+  </section>
+
+  <aside class="tip">
+    <span class="tip-icon" aria-hidden="true">✦</span>
+    <div>
+      <strong>Revision tip</strong><br>
+      Hide the answers and try filling in each blank from memory. Reveal
+      the green answer panels to check your recall.
+    </div>
+  </aside>
+
+  <div class="section-heading">
+    <h2>Fill in the Blanks</h2>
+    <p>Review each question, then check the answer directly below it.</p>
+  </div>
+
+  <section class="question-grid" id="questionGrid"></section>
+</main>
+
+<footer>
+  <div class="footer-rule"></div>
+  <strong>© 2026–27 STUDY-HUB</strong>
+  <br>
+  HSC Information Technology · Chapter 1 — Advanced Web Designing
+</footer>
+
+<script>
+"use strict";
+
+const questions = [
+  ["The ______ element is a starting element in an HTML document; it indicates the document type definition being used.", "<!DOCTYPE html>"],
+  ["The ______ is a tag in HTML that describes some aspects of the contents of a webpage.", "<meta>"],
+  ["The <ol> tag defines an ______.", "Ordered List"],
+  ["An unordered list is created using the ______ tag.", "<ul>"],
+  ["The ______ element creates an inline frame.", "<iframe>"],
+  ["The ______ tag is used to specify video on an HTML document.", "<video>"],
+  ["If a web developer wants to add a description to an image, he must use the ______ attribute of the <img> tag.", "alt"],
+  ["The ______ property is used to set the position for an element in CSS.", "position"],
+  ["The ______ property defines the flow of content (left or right).", "float"],
+  ["The ______ property is used with elements that overlap with each other.", "positioning (z-index)"],
+  ["HTML stands for ______.", "Hyper Text Markup Language"],
+  ["The ______ is an evolving language with different versions supporting different features.", "HTML"],
+  ["______ is currently used because it supports mobile technology and multimedia.", "HTML5"],
+  ["The ______ tag is used to create a form for user input.", "<form>"],
+  ['<input type="..."> defines a color picker.', "color"],
+  ['<input type="..."> defines a field for entering a number.', "number"],
+  ['<input type="..."> defines a field for entering a URL.', "url"],
+  ['<input type="..."> defines an image as a submit button.', "image"],
+  ['<input type="..."> defines a date picker with year, month, and day.', "date"],
+  ['<input type="..."> defines a field for an email address.', "email"],
+  ['<input type="..."> defines a month and year control (YYYY-MM).', "month"],
+  ['<input type="..."> defines a range control (slider).', "range"],
+  ['<input type="..."> defines a date picker that includes year, month, day, and time.', "datetime-local"],
+  ['<input type="..."> defines a control for entering a time.', "time"],
+  ['<input type="..."> defines a week and year control.', "week"],
+  ['<input type="..."> defines a text field for entering a search string.', "search"],
+  ['<input type="..."> defines a select field and a "Browse" button for file uploads.', "file"],
+  ['<input type="..."> is used to define input fields for telephone numbers.', "tel"],
+  ["The ______ attribute of the <input> tag specifies that an input field should be disabled.", "disabled"],
+  ["The ______ attribute of the <input> tag specifies the maximum value.", "max"],
+  ["The ______ attribute of the <input> tag specifies the minimum value.", "min"],
+  ["The ______ attribute of the <input> tag specifies a regular expression (regex) to check input.", "pattern"],
+  ["The ______ attribute of the <input> tag specifies that a field is read-only.", "readonly"],
+  ["The ______ attribute acts as a temporary label showing the purpose of a field without a <label> tag.", "placeholder"],
+  ["The ______ attribute of the <input> tag specifies that a field must be filled out.", "required"],
+  ["The ______ attribute specifies whether a form should have auto-completion on or off.", "autocomplete"],
+  ["The ______ attribute specifies that a field should automatically get focus when the page loads.", "autofocus"],
+  ['The ______ and ______ attributes specify the size of an <input type="image">.', "height and width"],
+  ["The ______ attribute allows the user to enter more than one value (e.g., in file or email).", "multiple"],
+  ["The ______ attribute is used to identify an HTML element uniquely.", "id"],
+  ["The ______ attribute is used to apply CSS styles to a group of elements.", "class"],
+  ["The ______ tag is used by search engines to search information provided with the web page.", "<meta>"],
+  ["Metadata provided by the <meta> tag will not be ______ on the web page.", "displayed"],
+  ["The ______ attribute of the <meta> tag specifies the character encoding used (e.g., UTF-8).", "charset"],
+  ["The ______ attribute of the <meta> tag is used for HTTP response message headers.", "http-equiv"],
+  ['<meta http-equiv="refresh" content="5"> specifies the page will refresh every ______ seconds.', "five"],
+  ["______ can control the layout of multiple web pages all at once.", "CSS"],
+  ["A CSS rule set contains a ______ and a declaration block.", "selector"],
+  ["Each declaration in CSS contains a property name and a value, separated by a ______.", "colon"],
+  ["There are ______ methods of implementing styling information in HTML.", "three"],
+  ["______ style sheet uses the style attribute inside the HTML start tag.", "Inline"],
+  ["The ______ style sheet is used to apply CSS to a single document using the <style> tag.", "Internal"],
+  ["The ______ style sheet facilitates changing the look of an entire website by changing one file.", "External"],
+  ["The external style sheet must be saved with the ______ extension.", ".css"],
+  ["In CSS, the ______ property changes the color of the text.", "color"],
+  ["The ______ property is used to make the text bold.", "font-weight"],
+  ["The ______ property is used to make the text italic.", "font-style"],
+  ["The ______ property is used to add underline or strike-through.", "text-decoration"],
+  ["The ______ property is used to control the horizontal alignment of text.", "text-align"],
+  ["The ______ property is used to control the font type.", "font-family"],
+  ["The ______ property allows you to control the size of the font.", "font-size"],
+  ["The ______ property adds space around the contents inside an element.", "padding"],
+  ["The ______ property adds space outside the border of an element.", "margin"],
+  ["The ID selector is written with the ______ character followed by the ID name.", "# (Hash)"],
+  ["The Class selector is written with a ______ character followed by the class name", ". (Period)"],
+  ["The ______ selector is used as a wildcard to select all elements.", "Universal (*)"],
+  ["In a grouping selector, ______ are used to separate each selector.", "commas"],
+  ["The ______ positioning is the default position for an HTML element.", "static"],
+  ["The ______ positioning helps keep an element fixed even when the page is scrolled.", "fixed"],
+  ["The ______ positioning property sets an element relative to its normal position.", "relative"],
+  ["The ______ positioning property sets an element in a specific location relative to its parent.", "absolute"],
+  ["The ______ property defines how components are placed (block, inline, etc.) on a page.", "display"],
+  ["The ______ attribute of the <ol> tag specifies the starting number.", "start"],
+  ["An unordered list is also called a ______ list.", "bulleted"],
+  ["Each list item in a <ul> or <ol> starts with the ______ tag.", "<li>"],
+  ["To define a definition list, the ______ tag is used.", "<dl>"],
+  ["The ______ tag defines the term, while ______ defines the description in a <dl>.", "<dt> and <dd>"],
+  ["The list within another list is called a ______ list.", "nested"],
+  ["The ______ element enables embedding audio files into a webpage.", "<audio>"],
+  ["The ______ attribute of the <audio> tag specifies that the audio should play repeatedly.", "loop"],
+  ["The ______ tag is used to specify multiple media resources for audio or video.", "<source>"],
+  ["The ______ attribute of the <video> tag specifies an image to be shown while the video is downloading.", "poster"],
+  ["An image with multiple hyperlinks is called an ______.", "Image Map"],
+  ["The clickable regions of an image map are called ______.", "hotspots"],
+  ["To create a client-side image map, the ______ attribute of the <img> tag is used.", "usemap"],
+  ["The ______ attribute of the <area> tag defines the coordinates of the clickable region.", "coords"],
+  ["The ______ attribute of the <area> tag defines the shape (rect, circle, poly).", "shape"],
+  ["The company that provides storage space for a website is called a ______.", "Web Host"],
+  ["______ hosting is a paid service where the entire server is reserved for one user.", "Dedicated"],
+  ["______ hosting allows multiple websites to share the same server resources.", "Shared"]
+];
+
+const questionGrid = document.getElementById("questionGrid");
+const toggleButton = document.getElementById("toggleAnswers");
+const exportButton = document.getElementById("exportBtn");
+
+document.getElementById("questionCount").textContent =
+  questions.length + " QUESTIONS";
+
+function makeTextElement(tag, className, text) {
+  const element = document.createElement(tag);
+  element.className = className;
+  element.textContent = text;
+  return element;
+}
+
+questions.forEach((item, index) => {
+  const card = document.createElement("article");
+  card.className = "question-card";
+
+  const questionLine = document.createElement("div");
+  questionLine.className = "question-line";
+
+  const numberBadge = makeTextElement(
+    "span",
+    "number-badge",
+    String(index + 1).padStart(2, "0")
+  );
+
+  const questionText = makeTextElement(
+    "p",
+    "question-text",
+    item[0]
+  );
+
+  questionLine.append(numberBadge, questionText);
+
+  const answerPanel = document.createElement("div");
+  answerPanel.className = "answer-panel";
+
+  const answerLabel = makeTextElement(
+    "span",
+    "answer-label",
+    "ANSWER"
+  );
+
+  const answerText = makeTextElement(
+    "p",
+    "answer-text",
+    item[1]
+  );
+
+  answerPanel.append(answerLabel, answerText);
+  card.append(questionLine, answerPanel);
+  questionGrid.appendChild(card);
+});
+
+function setAnswersVisible(visible) {
+  document.body.classList.toggle("answers-hidden", !visible);
+
+  toggleButton.textContent = visible
+    ? "Hide All Answers"
+    : "Show All Answers";
+
+  toggleButton.setAttribute("aria-pressed", String(visible));
+}
+
+toggleButton.addEventListener("click", () => {
+  const currentlyHidden =
+    document.body.classList.contains("answers-hidden");
+
+  setAnswersVisible(currentlyHidden);
+});
+
+exportButton.addEventListener("click", () => {
+  setAnswersVisible(true);
+  window.print();
+});
+
+window.addEventListener("beforeprint", () => {
+  setAnswersVisible(true);
+});
+
+window.addEventListener("afterprint", () => {
+  setAnswersVisible(true);
+});
+</script>
+
+</body>
+      </html>
