@@ -1,0 +1,472 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#102d68">
+<title>Not Included in Syllabus | STUDY-HUB</title>
+
+<style>
+:root{
+  --navy:#081b43;
+  --blue:#1746a2;
+  --royal:#2864e8;
+  --ink:#183153;
+  --muted:#61718a;
+  --border:#d6e5fb;
+  --red:#b42332;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  color:var(--ink);
+  font-family:"Segoe UI",Arial,sans-serif;
+  background:linear-gradient(180deg,#edf5ff,#f8fbff 420px,#f2f6fc);
+  line-height:1.55;
+}
+.hero{
+  color:white;
+  padding:25px 20px 60px;
+  background:
+    radial-gradient(circle at 85% 15%,#68c9ff35,transparent 28%),
+    linear-gradient(130deg,#071633,#103574 60%,#2059bf);
+}
+.topbar,.hero-content{
+  max-width:1100px;
+  margin:auto;
+}
+.topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-weight:900;
+  letter-spacing:3px;
+}
+.logo{
+  display:grid;
+  place-items:center;
+  width:45px;
+  height:45px;
+  color:#153c82;
+  background:linear-gradient(145deg,white,#bce7ff);
+  border-radius:13px;
+}
+.actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:11px 15px;
+  border-radius:12px;
+  font-weight:800;
+  font-size:.85rem;
+  cursor:pointer;
+  text-decoration:none;
+}
+.back{
+  color:white;
+  background:#ffffff15;
+  border:1px solid #ffffff50;
+}
+.export{
+  color:white;
+  background:linear-gradient(135deg,#438aff,#2054d9);
+  border:1px solid #ffffff50;
+}
+.hero-content{margin-top:45px}
+.eyebrow{
+  color:#c6e9ff;
+  font-weight:850;
+  letter-spacing:3px;
+  font-size:.85rem;
+}
+.chapter-tag{
+  display:inline-block;
+  margin-top:22px;
+  padding:7px 14px;
+  border:1px solid #ffffff45;
+  border-radius:30px;
+  background:#ffffff12;
+  font-weight:800;
+  letter-spacing:2px;
+}
+h1{
+  margin:16px 0 8px;
+  font-size:clamp(2rem,6vw,4rem);
+  line-height:1.05;
+}
+.hero-subtitle{
+  color:#dceeff;
+  font-weight:750;
+  letter-spacing:2px;
+}
+.pills{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:25px;
+}
+.pills span{
+  padding:9px 13px;
+  border:1px solid #ffffff35;
+  border-radius:10px;
+  background:#ffffff12;
+}
+main{
+  max-width:1100px;
+  margin:-23px auto 0;
+  padding:0 18px 40px;
+}
+.toolbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:12px;
+  padding:19px;
+  background:white;
+  border-radius:19px;
+  box-shadow:0 10px 28px #17438712;
+}
+.counter{
+  color:#15376e;
+  font-weight:900;
+  font-size:1.15rem;
+}
+.counter small{
+  display:block;
+  color:var(--muted);
+  font-size:.8rem;
+  font-weight:600;
+}
+.warning{
+  margin:22px 0;
+  padding:17px;
+  color:#75404a;
+  background:#fff0f1;
+  border:1px solid #f3c8cd;
+  border-radius:15px;
+}
+.warning strong{color:#a51d2d}
+.section-heading h2{
+  margin:0;
+  color:#102b5f;
+  font-size:1.4rem;
+}
+.section-heading p{color:var(--muted)}
+.question-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:15px;
+}
+.question-card{
+  min-width:0;
+  padding:18px;
+  background:white;
+  border:1px solid var(--border);
+  border-radius:18px;
+  box-shadow:0 4px 15px #1d488c0b;
+  break-inside:avoid;
+}
+.question-line{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+}
+.number{
+  display:grid;
+  place-items:center;
+  flex:0 0 42px;
+  height:42px;
+  color:white;
+  background:linear-gradient(145deg,#4b8bff,#1f50c5);
+  border-radius:12px;
+  font-weight:900;
+}
+.question-text{
+  margin:4px 0 16px;
+  font-weight:750;
+  color:#18345f;
+  overflow-wrap:anywhere;
+}
+.excluded-label{
+  display:inline-block;
+  margin:0 0 13px;
+  padding:6px 10px;
+  color:#a51d2d;
+  background:#fff0f1;
+  border:1px solid #f3c8cd;
+  border-radius:8px;
+  font-size:.7rem;
+  font-weight:950;
+  letter-spacing:1px;
+}
+.options{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:9px;
+}
+.option{
+  padding:11px;
+  background:#f1f5fc;
+  border:1px solid #dce6f3;
+  border-radius:11px;
+  color:#405873;
+  overflow-wrap:anywhere;
+}
+.empty{
+  padding:30px 20px;
+  background:white;
+  border:1px dashed #9ebbe8;
+  border-radius:17px;
+  text-align:center;
+  color:var(--muted);
+  grid-column:1/-1;
+}
+.empty strong{
+  display:block;
+  color:#173c78;
+  font-size:1.1rem;
+}
+footer{
+  padding:25px 15px 35px;
+  text-align:center;
+  color:#6d7e99;
+  font-size:.85rem;
+}
+footer strong{color:#234a87;letter-spacing:2px}
+.footer-rule{
+  width:60px;
+  height:3px;
+  margin:0 auto 12px;
+  background:linear-gradient(90deg,#67b9ff,#2459d8);
+  border-radius:9px;
+}
+@media(max-width:650px){
+  .hero{padding:20px 15px 48px}
+  .topbar{flex-wrap:wrap}
+  .hero-content{margin-top:35px}
+  main{padding:0 13px 30px}
+  .question-grid{grid-template-columns:1fr}
+  .question-card{padding:15px}
+}
+@media print{
+  @page{size:A4;margin:12mm}
+  body{background:white!important}
+  .hero{
+    padding:12mm;
+    print-color-adjust:exact;
+    -webkit-print-color-adjust:exact;
+  }
+  .actions{display:none!important}
+  main{margin:8mm 0;padding:0}
+  .toolbar{box-shadow:none;border:1px solid #ddd}
+  .question-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .question-card{break-inside:avoid;box-shadow:none}
+  footer{padding:10px}
+}
+</style>
+</head>
+
+<body>
+
+<header class="hero">
+  <div class="topbar">
+    <div class="brand">
+      <span class="logo">S</span>
+      <span>STUDY-HUB</span>
+    </div>
+
+    <div class="actions">
+      <a href="index.html" class="btn back">← Back to Home</a>
+      <button class="btn export" onclick="exportPDF()">
+        ↓ EXPORT PDF
+      </button>
+    </div>
+  </div>
+
+  <div class="hero-content">
+    <div class="eyebrow">HSC INFORMATION TECHNOLOGY</div>
+    <div class="chapter-tag">CHAPTER 2</div>
+    <h1>NOT INCLUDED<br>IN SYLLABUS</h1>
+    <p class="hero-subtitle">BRIEF ANSWERS</p>
+
+    <div class="pills">
+      <span>✦ Syllabus reference</span>
+      <span>Chapter 2</span>
+      <span>Academic Year 2026–27</span>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="toolbar">
+    <div class="counter">
+      <span id="questionCount">0 QUESTIONS</span>
+      <small>Questions marked as not included in syllabus</small>
+    </div>
+  </section>
+
+  <aside class="warning">
+    <strong>⚠ IMPORTANT SYLLABUS NOTE</strong><br>
+    The questions displayed here are intended to identify
+    material marked as not included in the syllabus.
+    Check the official syllabus before excluding any question.
+  </aside>
+
+  <div class="section-heading">
+    <h2>Excluded Questions</h2>
+    <p>Review the question numbers and their original content below.</p>
+  </div>
+
+  <section class="question-grid" id="questionGrid"></section>
+
+</main>
+
+<footer>
+  <div class="footer-rule"></div>
+  <strong>© 2026–27 STUDY-HUB</strong>
+  <br>
+  HSC Information Technology · Syllabus Reference
+</footer>
+
+<script>
+"use strict";
+
+/*
+ ADD THE ACTUAL EXCLUDED QUESTIONS BELOW.
+
+ Format:
+ {
+   chapter: "Chapter 1",
+   number: 15,
+   question: "Write the question here.",
+   options: [
+     "Option A",
+     "Option B",
+     "Option C",
+     "Option D"
+   ]
+ }
+
+ For questions without options, use:
+ options: []
+*/
+
+const questions = [
+  // Add verified excluded questions here.
+];
+
+const grid = document.getElementById("questionGrid");
+
+document.getElementById("questionCount").textContent =
+  questions.length + " QUESTIONS";
+
+function createElement(tag, className, text){
+  const element = document.createElement(tag);
+  element.className = className;
+  element.textContent = text;
+  return element;
+}
+
+function renderQuestions(){
+  if(questions.length === 0){
+    const empty = document.createElement("div");
+    empty.className = "empty";
+
+    const heading = createElement(
+      "strong",
+      "",
+      "No questions added yet"
+    );
+
+    const message = createElement(
+      "p",
+      "",
+      "Add the verified questions excluded from the syllabus in the questions array in this HTML file."
+    );
+
+    empty.append(heading,message);
+    grid.appendChild(empty);
+    return;
+  }
+
+  questions.forEach((item,index)=>{
+    const card = document.createElement("article");
+    card.className = "question-card";
+
+    const line = document.createElement("div");
+    line.className = "question-line";
+
+    const number = createElement(
+      "span",
+      "number",
+      String(item.number || index+1).padStart(2,"0")
+    );
+
+    const question = createElement(
+      "p",
+      "question-text",
+      item.question
+    );
+
+    line.append(number,question);
+
+    const label = createElement(
+      "div",
+      "excluded-label",
+      "NOT INCLUDED IN SYLLABUS"
+    );
+
+    const chapter = createElement(
+      "p",
+      "",
+      item.chapter || "Chapter not specified"
+    );
+    chapter.style.color = "#61718a";
+    chapter.style.fontWeight = "700";
+
+    card.append(line,label,chapter);
+
+    if(Array.isArray(item.options) && item.options.length){
+      const options = document.createElement("div");
+      options.className = "options";
+
+      item.options.forEach((option,i)=>{
+        const optionCard = createElement(
+          "div",
+          "option",
+          "(" + String.fromCharCode(97+i) + ") " + option
+        );
+        options.appendChild(optionCard);
+      });
+
+      card.appendChild(options);
+    }
+
+    grid.appendChild(card);
+  });
+}
+
+function exportPDF(){
+  window.print();
+}
+
+renderQuestions();
+</script>
+
+</body>
+</html>
